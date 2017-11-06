@@ -291,7 +291,34 @@ export function cube ( x ) {
 ```
 
 
+### IIFE & UMD
 
+```js
+
+(function (global, factory) {
+    // umd === commonjs(exports/module.exports)/amd(define)/global var(IIFE)
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory() :
+    typeof define === 'function' && define.amd ? define(factory) : (factory());
+}(this, (
+    function () { 
+        'use strict';
+        // local variable
+        let b = document.querySelector(`body`);
+        // in ES5 strict mode, call a var before declare it will throw an error!
+        b.style.background = `#0f0`;
+        // just call function in IIFE, which can not execute out of this IIFE function!
+        const init = () => {
+            console.log(`this is just an init function!`);
+        };
+        return {
+            init
+        };
+    }
+)));
+b;
+// Uncaught ReferenceError: b is not defined
+
+```
 
 
 
