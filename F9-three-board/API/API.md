@@ -3,6 +3,11 @@ http://10.1.5.202/webservice/fastview/otc/参数
 
 http://10.1.5.202/webservice/fastview/otc/otcfast01
 
+
+http://10.1.5.202/webservice/fastview/stock/stockfast01/600570.SH
+
+
+
 参数：		
     otcfast01	新增挂牌
     otcfast02	新增协议
