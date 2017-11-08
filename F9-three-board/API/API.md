@@ -8,20 +8,23 @@ http://10.1.5.202/webservice/fastview/stock/stockfast01/600570.SH
 
 
 
+# 新三板专题统计 New Sanbanxi Thematic statistics (nsbts)
+
+
 参数：		
-    otcfast01	新增挂牌
-    otcfast02	新增协议
-    otcfast03	交易排行榜
-    otcfast04	增发事项-预案
-    otcfast05	增发事项-实施
-    otcfast06	分红事项-预案
-    otcfast07	分红事项-实施
-    otcfast08	挂牌情况
-    otcfast09	成交概况
-    otcfast10	成交走势-做市图
-    otcfast11	成交走势-协议图
-    news	    新闻
-    bulletion	公告
+    otcfast01	新增挂牌 newly-added-listing
+    otcfast02	新增协议 newly-added-protocol // No Data
+    otcfast03	交易排行榜 transactions-leaderboard /trading-rankings
+    otcfast04	增发事项-预案 additional-issues-preplan
+    otcfast05	增发事项-实施 additional-issues-implementation
+    otcfast06	分红事项-预案 dividend-matters-preplan
+    otcfast07	分红事项-实施 dividend-matters-implementation
+    otcfast08	挂牌情况 listing-situation
+    otcfast09	成交概况 transaction-overview
+    otcfast10	成交走势-做市图 turnover-trend-make-market-diagram
+    otcfast11	成交走势-协议图 turnover-trend-protocol-diagram
+    news	    新闻 new-sb-thematic-statistics-news
+    bulletion	公告 new-sb-thematic-statistics-bulletin
 
 ```js
 {
@@ -38,44 +41,49 @@ http://10.1.5.202/webservice/fastview/stock/stockfast01/600570.SH
         jzcsyl: "净资产收益率",
         zgb: "总股本",
         ltgb: "流通股本"
-    }
+    },
     "otcfast02": {
         name: "新增协议",
-    }
+    },
     "otcfast03": {
         name: "交易排行榜",
-    }
+    },
     "otcfast04": {
         name: "增发事项-预案",
-    }
+    },
     "otcfast05": {
         name: "增发事项-实施",
-    }
+    },
     "otcfast06": {
         name: "分红事项-预案",
-    }
+    },
     "otcfast07": {
         name: "分红事项-实施",
-    }
+    },
     "otcfast08": {
         name: "挂牌情况",
-    }
+    },
     "otcfast09": {
         name: "成交概况",
-    }
+    },
     "otcfast10": {
         name: "成交走势-做市图",
-    }
+    },
     "otcfast11": {
         name: "成交走势-协议图"
     },
     "news": {
         name: "新闻",
-    }
+    },
     "bulletion": {
         name: "公告",
     }
 }
+
+
+Object.keys(obj);
+// ["otcfast01", "otcfast02", "otcfast03", "otcfast04", "otcfast05", "otcfast06", "otcfast07", "otcfast08", "otcfast09", "otcfast10", "otcfast11", "news", "bulletion"]
+
 
 ```
 
@@ -109,14 +117,7 @@ http://10.1.5.202/webservice/fastview/stock/stockfast01/600570.SH
     xxx: "",
 }
 ```
-    /**
-     * 
-     */
-    private double ;
-    /**
-     * 
-     */
-    private double ;
+
 otcfast02:
     与otcfast01一样
 
@@ -267,3 +268,23 @@ otcfast11:
      * 成交额（亿元）
      */
     private double cje;
+
+
+
+
+
+
+
+## multi tabs & multi modules  === one API(args) & click fetch data (default tab one)
+
+## one tab & multi modules  === one API(objects in object)
+
+
+
+
+
+
+
+
+
+
