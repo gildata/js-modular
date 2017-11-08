@@ -23,8 +23,8 @@ http://10.1.5.202/webservice/fastview/stock/stockfast01/600570.SH
     otcfast09	成交概况 transaction-overview
     otcfast10	成交走势-做市图 turnover-trend-make-market-diagram
     otcfast11	成交走势-协议图 turnover-trend-protocol-diagram
-    news	    新闻 new-sb-thematic-statistics-news
-    bulletion	公告 new-sb-thematic-statistics-bulletin
+    news	    公司新闻 new-sb-thematic-statistics-news
+    bulletion	公司公告 new-sb-thematic-statistics-bulletin
 
 ```js
 {

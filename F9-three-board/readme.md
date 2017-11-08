@@ -20,6 +20,21 @@ NTB_F9.Utils
 NTB_F9.Helper
 
 
+# 新三板专题统计
+
+> namespaces
+
+NTB_TS.Modules.
+NTB_TS.Utils
+NTB_TS.Helper
+
+file:///E:/github/projects/D2Designs/%E6%96%B0%E4%B8%89%E6%9D%BF/%E6%96%B0%E4%B8%89%E6%9D%BF%E4%B8%93%E9%A2%98%E7%BB%9F%E8%AE%A1/%E5%8E%9F%E5%9E%8B%E7%BD%91%E9%A1%B5/index.html#g=1&p=三板速览
+
+http://jira.gildata.com:8888/browse/GFT-430
+
+
+
+
 
 
 # 速览
