@@ -50,33 +50,60 @@ https://gtmetrix.com/reports/www.xgqfrms.xyz/kXYISkd9
 document.addEventListener('DOMContentLoaded', function () {
     // var fromatJSONButton = document.getElementById('fromatJSON');
     const jf_btn = document.querySelector(`#fromatJSON`);
+    const url = window.location.href;
     jf_btn.addEventListener('click', function () {
-        // chrome.tabs ???
-        chrome.tabs.getSelected(null, function (tab) {
-                let jf_document = document,
-                    // #document & "object"
-                    jf_form = d.createElement('form'),
-                    jf_input = d.createElement('input');
-                // input
-                jf_input.type = 'hidden';
-                jf_input.name = 'url';
-                jf_input.value = tab.url;
-                // form
-                // jf_form.action = 'https://gtmetrix.com/analyze.html?bm';//400 - Bad Request
-                // xgqfrms@163.com
-                // https://gtmetrix.com/api/0.1/test?url="www.xgqfrms.xyz"
-                // https://gtmetrix.com/analyze.html
-                jf_form.action = `https://gtmetrix.com/api/0.1/test?url=`;
-                jf_form.method = `POST`;
-                // 
-                jf_form.appendChild(jf_input);
-                // jf_form.insertAdjacentElement(`beforeend`, jf_input);
-                jf_document.body.appendChild(jf_form);
-                // jf_document.body.insertAdjacentElement(`beforeend`, jf_form);
-                jf_form.submit();
-                // auto click submit button!
-            });
-    }, false);
+        let jf_document = document,
+        // #document & "object"
+        jf_form = jf_document.createElement('form'),
+        jf_input = jf_document.createElement('input');
+        // input
+        jf_input.type = 'hidden';
+        jf_input.name = 'url';
+        jf_input.value = url;
+        // form
+        // jf_form.action = 'https://gtmetrix.com/analyze.html?bm';//400 - Bad Request
+        // xgqfrms@163.com
+        // https://gtmetrix.com/api/0.1/test?url="www.xgqfrms.xyz"
+        // https://gtmetrix.com/analyze.html
+        jf_form.action = `https://gtmetrix.com/api/0.1/test?url=`;
+        jf_form.method = `POST`;
+        // 
+        jf_form.appendChild(jf_input);
+        // jf_form.insertAdjacentElement(`beforeend`, jf_input);
+        jf_document.body.appendChild(jf_form);
+        // jf_document.body.insertAdjacentElement(`beforeend`, jf_form);
+        jf_form.submit();
+        // auto click submit button!
+    });
+    // "http://10.1.5.202/webservice/fastview/otc/news"
+    // jf_btn.addEventListener('click', function () {
+    //     // chrome.tabs ??? 
+    //     // Uncaught TypeError: Cannot read property 'getSelected' of undefined
+    //     chrome.tabs.getSelected(null, function (tab) {
+    //         let jf_document = document,
+    //             // #document & "object"
+    //             jf_form = jf_document.createElement('form'),
+    //             jf_input = jf_document.createElement('input');
+    //         // input
+    //         jf_input.type = 'hidden';
+    //         jf_input.name = 'url';
+    //         jf_input.value = tab.url;
+    //         // form
+    //         // jf_form.action = 'https://gtmetrix.com/analyze.html?bm';//400 - Bad Request
+    //         // xgqfrms@163.com
+    //         // https://gtmetrix.com/api/0.1/test?url="www.xgqfrms.xyz"
+    //         // https://gtmetrix.com/analyze.html
+    //         jf_form.action = `https://gtmetrix.com/api/0.1/test?url=`;
+    //         jf_form.method = `POST`;
+    //         // 
+    //         jf_form.appendChild(jf_input);
+    //         // jf_form.insertAdjacentElement(`beforeend`, jf_input);
+    //         jf_document.body.appendChild(jf_form);
+    //         // jf_document.body.insertAdjacentElement(`beforeend`, jf_form);
+    //         jf_form.submit();
+    //         // auto click submit button!
+    //     });
+    // }, false);
 }, false);
 
 // https://googlechrome.github.io/samples/fetch-api/fetch-post.html
@@ -93,20 +120,17 @@ const FetchDatas = (url = `https://cdn.xgqfrms.xyz`) => {
         // "Content-Type": "text/plain",
         "Content-Type": "application/json",
         // "Content-Length": content.length.toString(),
-        "X-Custom-Header": "ProcessThisImmediately",
+        "X-Custom-Header": "ProcessThisImmediately"
     });
     fetch(
         api_url,
         {
             mode: "no-cors",
             method: "POST",
-            headers: myHeaders,
+            // headers: myHeaders,
             body: JSON.stringify(data),
             cache: 'default',
-            credentials: 'include',// 'omit'(default)/'same-origin'/'include'
-            // {"error": "Invalid URL: No URL specified"}
-            //credentials: 'user:passwd'
-            //credentials: 'xgqfrms@163.com:727fcec2246026e92be534f6c8a80c5a'
+            credentials: 'include'
         }
     )
     .then(res => res.json())
@@ -125,6 +149,12 @@ FetchDatas();
 /* 
 
 https://api.github.com/gists
+
+
+credentials: 'include',// 'omit'(default)/'same-origin'/'include'
+// {"error": "Invalid URL: No URL specified"}
+//credentials: 'user:passwd'
+//credentials: 'xgqfrms@163.com:727fcec2246026e92be534f6c8a80c5a'
 
 
 {
