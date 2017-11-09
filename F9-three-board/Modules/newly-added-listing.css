@@ -47,3 +47,43 @@
     height: 16px;
     /* line-height: 22px; */
 }
+
+#newly_added_listing_hs_container {
+    min-height: 100px;
+    width: 100%;
+}
+
+.fv-td-key::after {
+    content: ":"
+}
+
+.fv-th-fire::after {
+    content: "🔥"
+}
+
+.fv-th-more {
+    padding-left: 100px;
+    text-align: right;
+}
+
+[data-fv-th-title="Securities-Code"]::before {
+    content: "("
+}
+
+[data-fv-th-title="Securities-Code"]::after {
+    content: ")"
+}
+
+.fv-th-more>a[data-fv-th-link="fv-link-detials"] {
+    cursor: pointer;
+    color: rgba(2, 175, 255, 0.5);
+    text-decoration: none;
+}
+
+.fv-th-more>a[data-fv-th-link="fv-link-detials"]:hover {
+    color: rgba(2, 175, 255, 1);
+}
+
+[data-fv-th-link="fv-link-detials"]::after {
+    content: ">>"
+}

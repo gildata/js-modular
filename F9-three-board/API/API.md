@@ -26,7 +26,23 @@ http://10.1.5.202/webservice/fastview/stock/stockfast01/600570.SH
     news	    公司新闻 new-sb-thematic-statistics-news
     bulletion	公司公告 new-sb-thematic-statistics-bulletin
 
+
+
+
 ```js
+Object.keys(obj);
+// ["name", "gpjs", "zqdm", "zqjc", "sshy", "zbqs", "mgsy", "mgjzc", "jlrtbzz", "jzcsyl", "zgb", "ltgb"]
+Object.values(obj);
+// ["新增挂牌", "挂牌家数", "证券代码", "证券简称", "所属行业", "主板券商", "每股收益", "每股净资产", "净利润同比增长", "净资产收益率", "总股本", "流通股本"]
+
+Object.keys(obj).slice(1);
+// ["gpjs", "zqdm", "zqjc", "sshy", "zbqs", "mgsy", "mgjzc", "jlrtbzz", "jzcsyl", "zgb", "ltgb"]
+Object.values(obj).slice(1);
+// ["挂牌家数", "证券代码", "证券简称", "所属行业", "主板券商", "每股收益", "每股净资产", "净利润同比增长", "净资产收益率", "总股本", "流通股本"]
+
+
+
+
 {
     "otcfast01": {
         name: "新增挂牌",// name

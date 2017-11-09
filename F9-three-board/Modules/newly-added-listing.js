@@ -134,7 +134,7 @@ NSB_TS_FV.Modules.newlyAddedListing = NSB_TS_FV.Modules.newlyAddedListing || ((u
             );
             // console.log(`arr_obj = `, JSON.stringify(arr_obj, null, 4));
             datas = Object.assign(datas, arr_obj);
-            SPTdrawHS(datas, uid);
+            newlyAddedListingHC(datas, uid);
         }
     )
     .catch(error => console.log(`error = \n`, error));
@@ -151,7 +151,7 @@ NSB_TS_FV.Modules.newlyAddedListing = NSB_TS_FV.Modules.newlyAddedListing || ((u
  * @param {* Boolean} debug
  */
 
-NSB_TS_FV.Modules.SPTdrawHS = (datas = {}, container_uid = `container`, debug = false) => {
+NSB_TS_FV.Modules.newlyAddedListingHC = NSB_TS_FV.Modules.newlyAddedListingHC || ((datas = {}, container_uid = `container`, debug = false) => {
     let time = datas.time,
         SH_Index = datas.SH_Index,
         turn_over = datas.turn_over,
@@ -213,9 +213,6 @@ NSB_TS_FV.Modules.SPTdrawHS = (datas = {}, container_uid = `container`, debug = 
             datas.SH_Index[i]
         ]);
     }
-    // console.log(ohlc);
-    // console.log(volume);
-    // console.log(sh_index);
     /* 
         Highcharts lang 配置是全局配置
         针对所有图表有效，所有不能单独设置在某个图表中在，
@@ -523,7 +520,7 @@ NSB_TS_FV.Modules.SPTdrawHS = (datas = {}, container_uid = `container`, debug = 
             liveRedraw: true
         },
     });
-}
+});
 
 
 
@@ -538,7 +535,7 @@ setTimeout(() => {
     // profitForecast(url, true, uid);
     // let hs_container_uid = document.querySelector(`[data-hs-container="data-profit-forecast-container-uid"]`);
     // setTimeout(() => {
-    //     SPTdrawHS(hs_datas, uid);
+    //     newlyAddedListingHC(hs_datas, uid);
     // }, 0);
 }, 0);
 
