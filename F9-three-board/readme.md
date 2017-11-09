@@ -105,3 +105,18 @@ $ touch news.json, bulletion.json
 
 
 
+1. CSS classname translate to Hash
+
+2. DOM in Module
+
+3. using ProtoType to adding Utils functions
+
+
+
+
+
+
+
+
+
+
