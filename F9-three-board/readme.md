@@ -24,13 +24,64 @@ NTB_F9.Helper
 
 > namespaces
 
-NTB_TS.Modules.
-NTB_TS.Utils
-NTB_TS.Helper
-
 file:///E:/github/projects/D2Designs/%E6%96%B0%E4%B8%89%E6%9D%BF/%E6%96%B0%E4%B8%89%E6%9D%BF%E4%B8%93%E9%A2%98%E7%BB%9F%E8%AE%A1/%E5%8E%9F%E5%9E%8B%E7%BD%91%E9%A1%B5/index.html#g=1&p=三板速览
 
 http://jira.gildata.com:8888/browse/GFT-430
+
+
+
+
+```js
+
+// newly-added-listing
+
+"use strict";
+
+/**
+ * @namespace NSB_TS_FV : New San Ban Thematic Statistics
+ * @name newly-added-listing 新增挂牌
+ * @createed 2017.11.07 
+ * @author xgqfrms
+ * @copyright Gildata, Inc 2017-present
+ * @license MIT 
+ * @version v1.1.1
+ * 
+ * @param {* String} url 
+ * @param {* DOM Element} uid
+ * @param {* Boolean} debug 
+ */
+
+// namespaces
+var NSB_TS_FV = NSB_TS_FV || {};
+
+// sub namespaces
+NSB_TS_FV.Modules = NSB_TS_FV.Modules || {};
+NSB_TS_FV.Utils = NSB_TS_FV.Utils || {};
+NSB_TS_FV.Helper = NSB_TS_FV.Helper || {};
+
+/* 
+
+NSB_TS_FV.Modules.newlyAddedListing = NSB_TS_FV.Modules.newlyAddedListing || (() => console.log(`module testing!`));
+// () => console.log(`module testing!`)
+
+typeof NSB_TS_FV.Modules.newlyAddedListing
+// "function"
+
+NSB_TS_FV.Modules.newlyAddedListing();
+// module testing!
+
+*/
+
+
+
+
+
+```
+
+
+
+
+
 
 
 
