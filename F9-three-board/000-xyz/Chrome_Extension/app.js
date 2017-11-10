@@ -6,6 +6,33 @@
  * 
  */
 
+
+/* 
+
+
+function click(e) {
+    chrome.tabs.executeScript(null,{
+        code:"document.body.style.backgroundColor='" + e.target.id + "'"
+    });
+    window.close();
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    var divs = document.querySelectorAll('div');
+    for (var i = 0; i < divs.length; i++) {
+        divs[i].addEventListener('click', click);
+    }
+});
+
+
+// ??? chrome.tabs.executeScript
+
+
+
+
+
+*/
+
 document.addEventListener('DOMContentLoaded', function () {
     const debug = true;
     // fetch array data
@@ -30,6 +57,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     console.log(`json =\n`, JSON.stringify(json));
                     console.log(`datas =\n`, JSON.stringify(datas, null, 4));
                 }
+                chrome.tabs.executeScript(null,{
+                    // code:"document.body.style.backgroundColor='" + e.target.id + "'"
+                });
                 if (Array.isArray(datas) && datas.length > 0) {
                     let bd = document.querySelector(`bd`),
                         str = JSON.stringify(datas, null, 4);
@@ -66,6 +96,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         console.log(`3. bd.innerText =\n`, bd.innerText);
                     }
                 }
+                // window.open();
+                // tabs.create();
+                // chrome.tabs.create(object createProperties, function callback)
+                window.close();
             }
         )
         .catch(err => console.log(`\nError infos =\n`, err));

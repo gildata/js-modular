@@ -81,4 +81,22 @@ https://steamcn.com/source/plugin/steamcn_lang/static/banner/cn.png
 
 
 
+# Google Mail Checker
+
+https://developer.chrome.com/extensions/samples#google-mail-checker
+
+https://developer.chrome.com/extensions/examples/extensions/gmail/_locales/zh_CN/messages.json
+
+
+
+https://developer.chrome.com/extensions/samples#mappy
+
+
+https://developer.chrome.com/extensions/devguide
+
+
+
+https://developer.chrome.com/extensions/tabs#method-executeScript
+
+
 

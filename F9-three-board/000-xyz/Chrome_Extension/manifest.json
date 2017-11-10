@@ -8,6 +8,10 @@
         "default_popup": "app.html"
     },
     "permissions": [
-        "activeTab"
+        "activeTab",
+        "tabs",
+        "http://*/*",
+        "https://*/*",
+        "storage"
     ]
 }

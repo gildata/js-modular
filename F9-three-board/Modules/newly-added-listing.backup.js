@@ -77,7 +77,7 @@ NSB_TS_FV.Modules.newlyAddedListing = NSB_TS_FV.Modules.newlyAddedListing || ((u
                         {
                             x,
                             y,
-                            z: 6,// 气泡的大小
+                            z,
                             name,
                             code
                         }
@@ -96,6 +96,115 @@ NSB_TS_FV.Modules.newlyAddedListing = NSB_TS_FV.Modules.newlyAddedListing || ((u
                 console.log(`json_keys = \n`, json_keys);
                 console.log(`new_json_values = \n`, new_json_values);
             }
+            /* 
+                let objs_arr = json_values.map(
+                    (obj, index) => {
+                        // { x: 95, y: 95, z: 13.8, name: 'BE', country: '比利时' },
+                        // mgsy: "每股收益", mgjzc: "每股净资产", zgb: "总股本",
+                        // 
+                        let temp_obj = {};
+                        // shape array 
+                        ui_keys.map(
+                            (k, i) => {
+                                temp_obj[k] = obj[k];
+                            }
+                        );
+                        if (debug) {
+                            // console.log(`temp_obj = \n`, temp_obj);
+                        }
+                        return temp_obj;
+                    }
+                );
+                if (debug) {
+                    console.log(`objs_arr = \n`, objs_arr);
+                }
+            */
+            // sort 时间轴
+            // ["id872275", "id872341", "id872303", "id872315", "id872339", "id872329", "id872295", "id872296"].sort();
+            // ["id872275", "id872295", "id872296", "id872303", "id872315", "id872329", "id872339", "id872341"]
+            // ["gpjs", "zqdm", "zqjc", "sshy", "zbqs", "mgsy", "mgjzc", "jlrtbzz", "jzcsyl", "zgb", "ltgb"]
+            // ["挂牌家数", "证券代码", "证券简称", "所属行业", "主板券商", "每股收益", "每股净资产", "净利润同比增长", "净资产收益率", "总股本", "流通股本"]
+            /* 
+                const arr_objs = {};
+                const keys_arr = [];
+                ui_keys.forEach(
+                    (key, index) => {
+                        // 
+                        let new_key = ``;
+                        switch (key) {
+                            case "zqjc":
+                                new_key = `securities_abbreviation`;
+                                break;
+                            case "zqdm":
+                                new_key = `securities_code`;
+                                break;
+                            case "mgsy":
+                                new_key = `share_earnings`;
+                                break;
+                            case "mgjzc":
+                                new_key = `share_net_assets`;
+                                break;
+                            case "jlrtbzz":
+                                new_key = `net_profit_growth`;
+                                break;
+                            case "jzcsyl":
+                                new_key = `net_profit_income_rate`;
+                                break;
+                            case "zgb":
+                                new_key = `total_share_capital`;
+                                break;
+                            case "ltgb":
+                                new_key = `circulating_shares_capital`;
+                                break;
+                            default:
+                                // new_key = `😟 暂无数据`;
+                                break;
+                        }
+                        if (new_key.length > 0) {
+                            arr_objs[new_key] = {};
+                            keys_arr.push(new_key);
+                        }
+                    }
+                );
+                if (debug) {
+                    console.log(`arr_objs = `, JSON.stringify(arr_objs, null, 4));
+                    console.log(`keys_arr = `, JSON.stringify(keys_arr, null, 4));
+                }
+            */
+            /* 
+                let counter = 1;
+                let objs_arr_copy = objs_arr;
+                objs_arr_copy.map(
+                    (obj, i) => {
+                        let securities_code = ``,
+                            securities_abbreviation = ``,
+                            share_earnings = ``,
+                            share_net_assets = ``,
+                            net_profit_growth = ``,
+                            net_profit_income_rate = ``,
+                            total_share_capital = ``,
+                            circulating_shares_capital = ``;
+                        securities_code = (obj.zqjc !== undefined) ? obj.zqjc : `😟 暂无数据`;
+                        securities_abbreviation = (obj.zqjc !== undefined) ? obj.zqjc : `😟 暂无数据`;
+                        share_earnings = (obj.zqjc !== undefined) ? obj.zqjc : `😟 暂无数据`;
+                        share_net_assets = (obj.zqjc !== undefined) ? obj.zqjc : `😟 暂无数据`;
+                        net_profit_growth = (obj.zqjc !== undefined) ? obj.zqjc : `😟 暂无数据`;
+                        net_profit_income_rate = (obj.zqjc !== undefined) ? obj.zqjc : `😟 暂无数据`;
+                        total_share_capital = (obj.zqjc !== undefined) ? obj.zqjc : `😟 暂无数据`;
+                        circulating_shares_capital = (obj.zqjc !== undefined) ? obj.zqjc : `😟 暂无数据`;
+                        // arr_objs.time.push(time);
+                        if (counter === 1 && debug) {
+                            console.log(`objs_arr_copy = `, JSON.stringify(objs_arr_copy, null, 4));
+                            counter ++;
+                        }
+                    }
+                );
+            */
+            // console.log(`arr_objs = `, JSON.stringify(arr_objs, null, 4));
+            // datas = Object.assign(datas, arr_objs);
+            // datas = objs_arr;
+            // console.log(`datas = `, JSON.stringify(datas, null, 4));
+            // NSB_TS_FV.Modules.newlyAddedListingHC(datas, uid);
             datas = [].concat(new_json_values);
             // array
             NSB_TS_FV.Modules.newlyAddedListingHC(datas, uid);
@@ -105,27 +214,6 @@ NSB_TS_FV.Modules.newlyAddedListing = NSB_TS_FV.Modules.newlyAddedListing || ((u
     return datas;
 });
 
-
-/**
- * @author xgqfrms
- * 
- * @param {* String} code
- * @param {* String} table_dom_uid 
- * @param {* Boolean} debug
- */
-
-// NSB_TS_FV.Modules.newlyAddedListingTable = NSB_TS_FV.Modules.newlyAddedListingTable
-// NSB_TS_FV.Modules.newlyAddedListing_Table = NSB_TS_FV.Modules.newlyAddedListing_Table
-// NSB_TS_FV.Modules.newlyAddedListing.showTable = NSB_TS_FV.Modules.newlyAddedListing.showTable
-
-// function === Object !!!
-
-NSB_TS_FV.Modules.newlyAddedListing.showTable = NSB_TS_FV.Modules.newlyAddedListing.showTable || ((code = `600570`, table_dom_uid = `table_dom_uid`, debug = false) => {
-    // draw table
-    console.log(`code = `, code);
-    // let 
-});
-
 /**
  * @author xgqfrms
  * 
@@ -133,8 +221,6 @@ NSB_TS_FV.Modules.newlyAddedListing.showTable = NSB_TS_FV.Modules.newlyAddedList
  * @param {* String} container_uid 
  * @param {* Boolean} debug
  */
-// NSB_TS_FV.Modules.newlyAddedListingHC = NSB_TS_FV.Modules.newlyAddedListingHC 
-// NSB_TS_FV.Modules.newlyAddedListing.drawHC = NSB_TS_FV.Modules.newlyAddedListing.drawHC
 
 NSB_TS_FV.Modules.newlyAddedListingHC = NSB_TS_FV.Modules.newlyAddedListingHC || ((datas = [], container_uid = `container`, debug = false) => {
     let dataLength = datas.length;
@@ -150,6 +236,11 @@ NSB_TS_FV.Modules.newlyAddedListingHC = NSB_TS_FV.Modules.newlyAddedListingHC ||
     const {color, colors, optioncolor, gridColor, legendColor, yAxisColor} = {...chart_css};
     console.log(`Highcharts datas =\n`, datas);
     console.log(`%c Highcharts container_uid =`, `color: #f0f; font-size: 23px;`, container_uid);
+    /* 
+        Highcharts lang 配置是全局配置
+        针对所有图表有效，所有不能单独设置在某个图表中在，
+        只能在图表初始化之前通过 Highcharts.setOptions 来设置生效。
+    */
     /* 
         Highcharts.setOptions({
             lang: {
@@ -178,6 +269,9 @@ NSB_TS_FV.Modules.newlyAddedListingHC = NSB_TS_FV.Modules.newlyAddedListingHC ||
             },
         });
     */
+    // This error happens when you are setting chart.type or series.type to a series type that isn't defined in Highcharts.
+    // https://www.highcharts.com/errors/17
+    // https://code.highcharts.com/highcharts-more.js
     Highcharts.chart(container_uid, {
         noData: {
             attr: undefined,
@@ -214,10 +308,10 @@ NSB_TS_FV.Modules.newlyAddedListingHC = NSB_TS_FV.Modules.newlyAddedListingHC ||
         xAxis: {
             gridLineWidth: 1,
             title: {
-                text: '每股收益'
+                text: '每天脂肪摄入量'
             },
             labels: {
-                format: '{value}'
+                format: '{value} gr'
             },
             plotLines: [
                 {
@@ -242,10 +336,10 @@ NSB_TS_FV.Modules.newlyAddedListingHC = NSB_TS_FV.Modules.newlyAddedListingHC ||
             startOnTick: false,
             endOnTick: false,
             title: {
-                text: '每股净资产'
+                text: '每天糖的摄入量'
             },
             labels: {
-                format: '{value}'
+                format: '{value} gr'
             },
             maxPadding: 0.2,
             plotLines: [
@@ -253,13 +347,13 @@ NSB_TS_FV.Modules.newlyAddedListingHC = NSB_TS_FV.Modules.newlyAddedListingHC ||
                     color: 'black',
                     dashStyle: 'dot',
                     width: 2,
-                    value: 3,// 
+                    value: 50,
                     label: {
                         align: 'right',
                         style: {
                             fontStyle: 'italic'
                         },
-                        text: '正常 ??? 天',// 50
+                        text: '正常糖的摄入量 50g/天',
                         x: -10
                     },
                     zIndex: 3
@@ -267,6 +361,8 @@ NSB_TS_FV.Modules.newlyAddedListingHC = NSB_TS_FV.Modules.newlyAddedListingHC ||
                 // y line no
             ]
         },
+        // <th colspan="2"><h3>{${JSON.stringify(point, null, 4)}}</h3></th>
+        // point,
         tooltip: {
             useHTML: true,
             headerFormat: '<table>',
@@ -277,16 +373,16 @@ NSB_TS_FV.Modules.newlyAddedListingHC = NSB_TS_FV.Modules.newlyAddedListingHC ||
                     </th>
                 </tr>
                 <tr>
-                    <th>每股收益:</th>
-                    <td>{point.x}元</td>
+                    <th>脂肪摄取量:</th>
+                    <td>{point.x}g</td>
                 </tr>
                 <tr>
-                    <th>每股净资产:</th>
-                    <td>{point.y}万元</td>
+                    <th>糖摄取量:</th>
+                    <td>{point.y}g</td>
                 </tr>
                 <tr>
-                    <th>总股本:</th>
-                    <td>{point.z}万股</td>
+                    <th>肥胖 (成年人):</th>
+                    <td>{point.z}%</td>
                 </tr>
             `,// point.???
             footerFormat: '</table>',
@@ -303,22 +399,25 @@ NSB_TS_FV.Modules.newlyAddedListingHC = NSB_TS_FV.Modules.newlyAddedListingHC ||
                     click: function (event) {
                         alert(
                             this.name + ' clicked\n' +
-                            "\ncode: "+ event.point.code + 
+                            'Alt: ' + event.altKey + '\n' +
+                            'Control: ' + event.ctrlKey + '\n' +
+                            'Meta: ' + event.metaKey + '\n' +
+                            'Shift: ' + event.shiftKey +
                             "\nX: "+ event.point.x + 
                             "\nY: "+event.point.y + 
                             "\nZ: "+event.point.z
                         );
                         console.log(`event = \n`, event);
-                        console.log(`event.point.code= \n`, event.point.code);
-                        // 300725
                     }
                 },
                 point: {
                     events: {
                         click: function (event) {
+                            alert('event.point: ' + event.point);
+                            // event.point: [object Object]
                             console.log(`event.point = \n ${event.point}`);
-                            console.log(`event.point.code = \n ${event.point.code}`);
-                            // 300725
+                            // console.log(`event.point = \n ${JSON.stringify(event.point, null, 4)}`);
+                            // Uncaught TypeError: Converting circular structure to JSON
                         }
                     }
                 }
@@ -326,19 +425,65 @@ NSB_TS_FV.Modules.newlyAddedListingHC = NSB_TS_FV.Modules.newlyAddedListingHC ||
         },// ponit data
         series: [
             {
-                data: [...datas],
+                data: [
+                    ...datas
+                    // { x: 95, y: 95, z: 13.8, name: 'BE', country: '比利时' },// name, country
+                    // { x: 86.5, y: 102.9, z: 14.7, name: 'DE', country: '德国' },
+                    // { x: 80.8, y: 91.5, z: 15.8, name: 'FI', country: '芬兰' },
+                    // { x: 80.4, y: 102.5, z: 12, name: 'NL', country: '荷兰' },
+                    // { x: 80.3, y: 86.1, z: 11.8, name: 'SE', country: '瑞典' },
+                    // { x: 78.4, y: 70.1, z: 16.6, name: 'ES', country: '西班牙' },
+                    // { x: 74.2, y: 68.5, z: 14.5, name: 'FR', country: '法国' },
+                    // { x: 73.5, y: 83.1, z: 10, name: 'NO', country: '挪威' },
+                    // { x: 71, y: 93.2, z: 24.7, name: 'UK', country: '英国' },
+                    // { x: 69.2, y: 57.6, z: 10.4, name: 'IT', country: '意大利' },
+                    // { x: 68.6, y: 20, z: 16, name: 'RU', country: '俄罗斯' },
+                    // { x: 65.5, y: 126.4, z: 35.3, name: 'US', country: '美国' },
+                    // { x: 65.4, y: 50.8, z: 28.5, name: 'HU', country: '匈牙利' },
+                    // { x: 63.4, y: 51.8, z: 15.4, name: 'PT', country: '葡萄牙' },
+                    // { x: 64, y: 82.9, z: 31.3, name: 'NZ', country: '新西兰' },
+                    // {
+                    //     type: 'line',// 样条 "spline"
+                    //     name: '股价',
+                    //     color: 'green',
+                    //     lineColor: 'green',
+                    //     upColor: 'red',
+                    //     upLineColor: 'red',
+                    //     tooltip: {
+                    //         formatter: () => {
+                    //             return `
+                    //                 <b> ${this.series.name} </b><br/>
+                    //             `;
+                    //         },
+                    //         valueSuffix: ' 元'
+                    //     },
+                    //     tooltip: {
+                    //         formatter: () => {
+                    //             return `
+                    //             <b> ${this.series.name} </b><br/>
+                    //             ${Highcharts.dateFormat('%Y年%m月%e日', this.x)}:
+                    //             ${this.y} m
+                    //             `;
+                    //         }
+                    //     },
+                    //     navigatorOptions: {
+                    //         color: Highcharts.getOptions().colors[0]
+                    //     },
+                    //     data: [1,2,3,4,5,6,7,8,9],// data atrributes
+                    //     dataGrouping: {
+                    //         // units: groupingUnits
+                    //     },
+                    //     yAxis: 0,
+                    //     compare: 'percent',
+                    //     showInNavigator: true
+                    // },
+                ],// datas
+                // 3D xyz ????
+                // 
             }
         ],
     });
 });
-
-
-// constructor
-function xyz(params) {
-    //
-}
-
-
 
 
 

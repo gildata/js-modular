@@ -102,8 +102,24 @@ $(function () {
                 dataLabels: {
                     enabled: true,// counter name
                     format: '{point.name}'
+                },
+                cursor: 'pointer',
+                events: {
+                    click: function (event) {
+                        alert(
+                            this.name + ' clicked\n' +
+                            'Alt: ' + event.altKey + '\n' +
+                            'Control: ' + event.ctrlKey + '\n' +
+                            'Meta: ' + event.metaKey + '\n' +
+                            'Shift: ' + event.shiftKey +
+                            "\nX: "+ event.point.x + 
+                            "\nY: "+event.point.y
+                        );
+                        console.log(`event = \n`, event);
+                        console.log(`event.point = \n`, event.point);
+                    }
                 }
-            }
+            },
         },// ponit data
         series: [
             {
@@ -133,17 +149,14 @@ $(function () {
 // ["挂牌家数", "证券代码", "证券简称", "所属行业", "主板券商", "每股收益", "每股净资产", "净利润同比增长", "净资产收益率", "总股本", "流通股本"]
 
 
-{
-    "gpjs": 8,
-    "zqdm": "松华新材",
-    "zqjc": "872275",
-    "sshy": "橡胶和塑料制品业",
-    "zbqs": "东莞证券",
-    "mgsy": 0.09,
-    "mgjzc": 1.15,
-    "jlrtbzz": 0,
-    "jzcsyl": 0.08,
-    "zgb": 14880000,
-    "ltgb": 0
-},
 
+
+
+let securities_code = ``
+securities_abbreviation = ``
+share_earnings = ``
+share_net_assets = ``
+net_profit_growth = ``
+net_profit_income_rate = ``
+total_share_capital = ``
+circulating_shares_capital = ``;
