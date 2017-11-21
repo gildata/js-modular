@@ -12,13 +12,57 @@
     
 ```
 
-### Webpack
+# Webpack
+
+
+## code spiltting
 
 > code spiltting & dynamic imports module at runtime
 
 https://github.com/tc39/proposal-dynamic-import
 
 https://webpack.js.org/
+
+
+
+https://webpack.js.org/guides/code-splitting/
+
+https://webpack.js.org/plugins/commons-chunk-plugin/
+
+https://webpack.js.org/plugins/extract-text-webpack-plugin/
+https://webpack.js.org/loaders/bundle-loader/
+https://github.com/gaearon/promise-loader
+
+
+
+https://webpack.js.org/guides/code-splitting/#dynamic-imports
+
+
+chunkFilename: '[name].bundle.js',
+
+## import & then & catch
+
+## async function & await 
+
+https://webpack.js.org/guides/lazy-loading/
+https://github.com/webpack/analyse
+https://webpack.js.org/guides/caching/
+
+filename: '[name].[chunkhash].js',
+
+vendor: [
+    'lodash'
+]
+
+new webpack.optimize.CommonsChunkPlugin({
+    name: 'vendor'
+}),
+
+new webpack.HashedModuleIdsPlugin(),
+
+
+
+https://medium.freecodecamp.org/javascript-modules-a-beginner-s-guide-783f7d7a5fcc
 
 
 ### Rollup

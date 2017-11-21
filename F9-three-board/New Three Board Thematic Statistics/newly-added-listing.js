@@ -1,5 +1,3 @@
-// newly-added-listing
-
 "use strict";
 
 /**
