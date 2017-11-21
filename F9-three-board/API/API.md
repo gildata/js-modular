@@ -3,14 +3,31 @@
 > 新三板 F9
 
 
-NTB_F9
+
+
+## NameSpace
+
+> NTB_F9
+
+NTB_F9.Modules
+NTB_F9.Utils
+NTB_F9.Modal
 
 
 
+
+
+## API
 
 http://10.1.5.202/webservice/fastview/otc/参数
 
 http://10.1.5.202/webservice/fastview/otc/otcfast01
+http://10.1.5.202/webservice/fastview/otc/otcfast10
+
+http://10.1.5.202/webservice/fastview/otc/news
+http://10.1.5.202/webservice/fastview/otc/bulletion
+
+
 
 http://10.1.5.202/webservice/fastview/stock/stockfast01/600570.SH
 
@@ -50,7 +67,14 @@ http://www.szse.cn/
 > 新三板专题统计/三板速览
 
 
-NTB_TS
+## NameSpace
+
+> NTB_TS
+
+NTB_TS.Modules
+NTB_TS.Utils
+NTB_TS.Modal
+
 
 
 参数：		
@@ -67,6 +91,24 @@ NTB_TS
     otcfast11	成交走势-协议图 turnover-trend-protocol-diagram
     news	    公司新闻 new-sb-thematic-statistics-news
     bulletion	公司公告 new-sb-thematic-statistics-bulletin
+
+
+## API
+
+http://10.1.5.202/webservice/fastview/otc/参数
+
+http://10.1.5.202/webservice/fastview/otc/otcfast01
+http://10.1.5.202/webservice/fastview/otc/otcfast10
+
+http://10.1.5.202/webservice/fastview/otc/news
+http://10.1.5.202/webservice/fastview/otc/bulletion
+
+
+
+http://q.gxfin.com/oc/836000.html
+
+博商管理(836000.OC) - 新三板
+
 
 
 
@@ -101,41 +143,107 @@ Object.values(obj).slice(1);
         ltgb: "流通股本"
     },
     "otcfast02": {
-        name: "新增协议",
+        name: "新增协议",// ??? otcfast02 === otcfast01
+        gpjs: "挂牌家数",
+        zqdm: "证券代码",
+        zqjc: "证券简称",
+        sshy: "所属行业",
+        zbqs: "主板券商",
+        mgsy: "每股收益",
+        mgjzc: "每股净资产",
+        jlrtbzz: "净利润同比增长",
+        jzcsyl: "净资产收益率",
+        zgb: "总股本",
+        ltgb: "流通股本"
     },
     "otcfast03": {
-        name: "交易排行榜",
+        name: "交易排行榜(协议/做市)",
+        "xy": [
+            {
+                "zqdm": "证券代码",
+                "zqjc": "证券简称",
+                "zdf": "涨跌幅",
+                "cje": "成交额"
+            },
+        ],
+        "zs": [
+            {
+                "zqdm": "证券代码",
+                "zqjc": "证券简称",
+                "zdf": "涨跌幅",
+                "cje": "成交额"
+            },
+        ]
     },
     "otcfast04": {
         name: "增发事项-预案",
+        "zqdm": "证券代码",
+        "zqjc": "证券简称",
+        "mjje": "募集金额(万元)"
     },
     "otcfast05": {
         name: "增发事项-实施",
+        "zqdm": "证券代码",
+        "zqjc": "证券简称",
+        "mjje": "募集金额(万元)"
     },
     "otcfast06": {
         name: "分红事项-预案",
+        "zqdm": "证券代码",
+        "zqjc": "证券简称",
+        "mjje": "方案说明"
     },
     "otcfast07": {
         name: "分红事项-实施",
+        "zqdm": "证券代码",
+        "zqjc": "证券简称",
+        "mjje": "方案说明"
     },
     "otcfast08": {
         name: "挂牌情况",
+        "gpjs": "挂牌家数",
+        "xzjs": "今日新增挂牌家数",
+        "dgpjs": "待挂牌家数",
+        "sbjs": "申报中家数",
+        "bz": "标识(合计/协议/做市)"
     },
     "otcfast09": {
         name: "成交概况",
+        "cjjs": "成交家数",
+        "szjs": "上涨家数",
+        "xdjs": "下跌家数",
+        "cjl": "成交量(亿股)",
+        "cje": "成交额(亿元)",
+        "cjbs": "成交笔数,
+        "mc": "名称(合计/协议/做市)"
     },
     "otcfast10": {
         name: "成交走势-做市图",
+        "rq": "截止日期",
+        "cjl": "成交量(亿股)",
+        "cje": "成交额(亿元)"
     },
     "otcfast11": {
-        name: "成交走势-协议图"
+        name: "成交走势-协议图",
+        "rq": "截止日期",
+        "cjl": "成交量(亿股)",
+        "cje": "成交额(亿元)"
     },
     "news": {
         name: "新闻",
+        "xwtitle": "新闻标题",
+        "xwnr": "新闻内容",
+        "xwsj": "新闻时间",
+        "newid": "564580757615"
     },
     "bulletion": {
         name: "公告",
+        "gsggtitle": "公告标题",
+        "gsggsj": "公告时间",
+        "id": "1000000099090907",
+        "fileType": "pdf"
     }
+    // bulletin 公告
 }
 
 
@@ -159,6 +267,32 @@ Object.keys(obj);
     jzcsyl: "净资产收益率",
     zgb: "总股本",
     ltgb: "流通股本",
+},
+{
+    "xy": [
+        {
+            "zqdm": "证券代码",
+            "zqjc": "证券简称",
+            "zdf": "涨跌幅",
+            "cje": "成交额"
+        },
+    ],
+    "zs": [
+        {
+            "zqdm": "证券代码",
+            "zqjc": "证券简称",
+            "zdf": "涨跌幅",
+            "cje": "成交额"
+        },
+    ],
+    "alias": "协议 做市"
+},
+{
+    {
+        "zqdm": "证券代码",
+        "zqjc": "证券简称",
+        "mjje": "募集金额(万元)"
+    },
 }
 {
     xxx: "",
@@ -174,6 +308,10 @@ Object.keys(obj);
     xxx: "",
     xxx: "",
 }
+
+
+
+
 ```
 
 otcfast02:

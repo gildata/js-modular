@@ -51,18 +51,34 @@ NSB_TS_FV.Modules.newlyAddedListing = NSB_TS_FV.Modules.newlyAddedListing || ((u
             let json_keys = [],
                 json_values = [];
             if (json !== undefined && typeof json === "object") {
-                json_keys = Object.keys(json);
+                // json_keys = Object.keys(json);
+                json_keys = Object.keys(json).sort();
                 json_values = Object.values(json);
+                // show new add num
+                let new_add = document.querySelector(`[data-ntb-new-add-num="ntb-new-add-num"]`);
+                // new_add.innerHTML = json[json_keys[0]]["gpjs"];
+                new_add.innerHTML = json_values[0]["gpjs"];
+                // table
+                let init_uid = json_keys[0].replace(/(id)/i, ``);
+                if (debug) {
+                    console.log(`init_uid = \n`, init_uid);
+                    // "id872356" => "872356"
+                    console.log(`json = \n`, json);
+                }
+                NSB_TS_FV.Modules.newlyAddedListing.showTable(init_uid, json);
             }
             // async
             if (debug) {
                 console.log(`json = \n`, json);
+                // new_add.innerHTML = json[0]["gpjs"];
+                // console.log(`json[0] = \n`, json[0]);
+                // undefined
                 console.log(`json.keys = \n`, json_keys);
                 console.log(`json.values = \n`, json_values);
             }
             // sort json
             let new_json_values =[];
-            json_keys = json_keys.sort();
+            // json_keys = json_keys.sort();
             json_keys.map(
                 (key, i) => {
                     const {
@@ -98,7 +114,7 @@ NSB_TS_FV.Modules.newlyAddedListing = NSB_TS_FV.Modules.newlyAddedListing || ((u
             }
             datas = [].concat(new_json_values);
             // array
-            NSB_TS_FV.Modules.newlyAddedListingHC(datas, uid);
+            NSB_TS_FV.Modules.newlyAddedListing.drawHC(datas, uid, json, false);
         }
     )
     .catch(error => console.log(`error = \n`, error));
@@ -106,25 +122,7 @@ NSB_TS_FV.Modules.newlyAddedListing = NSB_TS_FV.Modules.newlyAddedListing || ((u
 });
 
 
-/**
- * @author xgqfrms
- * 
- * @param {* String} code
- * @param {* String} table_dom_uid 
- * @param {* Boolean} debug
- */
 
-// NSB_TS_FV.Modules.newlyAddedListingTable = NSB_TS_FV.Modules.newlyAddedListingTable
-// NSB_TS_FV.Modules.newlyAddedListing_Table = NSB_TS_FV.Modules.newlyAddedListing_Table
-// NSB_TS_FV.Modules.newlyAddedListing.showTable = NSB_TS_FV.Modules.newlyAddedListing.showTable
-
-// function === Object !!!
-
-NSB_TS_FV.Modules.newlyAddedListing.showTable = NSB_TS_FV.Modules.newlyAddedListing.showTable || ((code = `600570`, table_dom_uid = `table_dom_uid`, debug = false) => {
-    // draw table
-    console.log(`code = `, code);
-    // let 
-});
 
 /**
  * @author xgqfrms
@@ -133,10 +131,9 @@ NSB_TS_FV.Modules.newlyAddedListing.showTable = NSB_TS_FV.Modules.newlyAddedList
  * @param {* String} container_uid 
  * @param {* Boolean} debug
  */
-// NSB_TS_FV.Modules.newlyAddedListingHC = NSB_TS_FV.Modules.newlyAddedListingHC 
 // NSB_TS_FV.Modules.newlyAddedListing.drawHC = NSB_TS_FV.Modules.newlyAddedListing.drawHC
 
-NSB_TS_FV.Modules.newlyAddedListingHC = NSB_TS_FV.Modules.newlyAddedListingHC || ((datas = [], container_uid = `container`, debug = false) => {
+NSB_TS_FV.Modules.newlyAddedListing.drawHC = NSB_TS_FV.Modules.newlyAddedListing.drawHC || ((datas = [], container_uid = `container`, json = {}, debug = false) => {
     let dataLength = datas.length;
     // datas
     const chart_css = {
@@ -149,8 +146,10 @@ NSB_TS_FV.Modules.newlyAddedListingHC = NSB_TS_FV.Modules.newlyAddedListingHC ||
     };
     const {color, colors, optioncolor, gridColor, legendColor, yAxisColor} = {...chart_css};
     // webpack / rollup
-    console.log(`Highcharts datas =\n`, datas);
-    console.log(`%c Highcharts container_uid =`, `color: #f0f; font-size: 23px;`, container_uid);
+    if (debug) {
+        console.log(`Highcharts datas =\n`, datas);
+        console.log(`%c Highcharts container_uid =`, `color: #f0f; font-size: 23px;`, container_uid);
+    }
     /* 
         Highcharts.setOptions({
             lang: {
@@ -302,24 +301,35 @@ NSB_TS_FV.Modules.newlyAddedListingHC = NSB_TS_FV.Modules.newlyAddedListingHC ||
                 cursor: 'pointer',
                 events: {
                     click: function (event) {
-                        alert(
-                            this.name + ' clicked\n' +
-                            "\ncode: "+ event.point.code + 
-                            "\nX: "+ event.point.x + 
-                            "\nY: "+event.point.y + 
-                            "\nZ: "+event.point.z
-                        );
-                        console.log(`event = \n`, event);
-                        console.log(`event.point.code= \n`, event.point.code);
-                        // 300725
+                        // alert(
+                        //     this.name + ' clicked\n' +
+                        //     "\ncode: "+ event.point.code + 
+                        //     "\nX: "+ event.point.x + 
+                        //     "\nY: "+event.point.y + 
+                        //     "\nZ: "+event.point.z
+                        // );
+                        if (debug) {
+                            console.log(`event = \n`, event);
+                            console.log(`event.point.code= \n`, event.point.code, typeof(event.point.code));
+                        }
+                        // 300725 & string
+                        let code_uid = event.point.code;
+                        if (debug) {
+                            console.log(`code_uid = \n`, code_uid);
+                            // "id872356" => "872356"
+                            console.log(`json = \n`, json);
+                        }
+                        NSB_TS_FV.Modules.newlyAddedListing.showTable(code_uid, json);
                     }
                 },
                 point: {
                     events: {
                         click: function (event) {
-                            console.log(`event.point = \n ${event.point}`);
-                            console.log(`event.point.code = \n ${event.point.code}`);
-                            // 300725
+                            if (debug) {
+                                console.log(`event.point = \n ${event.point}`);
+                                console.log(`event.point.code = \n ${event.point.code}`);
+                                // 300725
+                            }
                         }
                     }
                 }
@@ -334,11 +344,67 @@ NSB_TS_FV.Modules.newlyAddedListingHC = NSB_TS_FV.Modules.newlyAddedListingHC ||
 });
 
 
-// constructor
-function xyz(params) {
-    //
-}
 
+/**
+ * @author xgqfrms
+ * 
+ * @param {* String} code
+ * @param {* String} table_dom_uid 
+ * @param {* Boolean} debug
+ * @param {* Object} data 
+ */
+
+
+
+NSB_TS_FV.Modules.newlyAddedListing.showTable = NSB_TS_FV.Modules.newlyAddedListing.showTable || ((uid = `6000570`, datas = {}, debug = false) => {
+    let new_uid = `id${uid}`;
+    if (debug) {
+        console.log(`uid = `, uid);
+        console.log(`new_uid = `, new_uid);
+        console.log(`data = `, JSON.stringify(data, null, 4));
+    }
+    // datas["id872358"]
+    let table_obj = datas[new_uid];
+    if (debug) {
+        console.log(`table_obj`, JSON.stringify(table_obj, null, 4));
+    }
+    let sa = document.querySelector(`[data-ntb-th-title="Securities-Abbreviation"]`),
+        sc = document.querySelector(`[data-ntb-th-title="Securities-Code"]`),
+        // new_add = document.querySelector(`[data-ntb-new-add-num="ntb-new-add-num"]`),
+        tb = document.querySelector(`[data-table-body="ntb-table-body-newly-added-listing"]`);
+    // let tr1 = tb.firstElementChild;
+    // let tr3 = tb.lastElementChild;
+    // [tr, tr, tr]
+    let trs = tb.children;
+    let tds1 = trs[0].children,
+        tds2 = trs[1].children,
+        tds3 = trs[2].children;
+    // const {zqjc, gpjs, zqdm, zqjc, sshy, zbqs} = table_obj;
+    // ES6 => ES5
+    // header
+    sa.innerHTML = `${table_obj.zqjc}`;
+    sc.innerHTML = `${table_obj.zqdm}.OC`;
+    // 博商管理(836000.OC) - 新三板
+    tds1[1].innerHTML = `${table_obj.sshy}`;
+    tds1[3].innerHTML = `${table_obj.zbqs}`;
+    tds1[1].setAttribute(`title`, `${table_obj.sshy}`);
+    tds1[3].setAttribute(`title`, `${table_obj.zbqs}`);
+    // tr1
+    tds2[1].innerHTML = `${table_obj.mgsy}`;
+    tds2[3].innerHTML = `${table_obj.jlrtbzz}`;
+    tds2[5].innerHTML = `${table_obj.zgb}`;
+    tds2[1].setAttribute(`title`, `${table_obj.mgsy}`);
+    tds2[3].setAttribute(`title`, `${table_obj.jlrtbzz}`);
+    tds2[5].setAttribute(`title`, `${table_obj.zgb}`);
+    // tr2
+    tds3[1].innerHTML = `${table_obj.mgjzc}`;
+    tds3[3].innerHTML = `${table_obj.jzcsyl}`;
+    tds3[5].innerHTML = `${table_obj.ltgb}`;
+    tds3[1].setAttribute(`title`, `${table_obj.mgjzc}`);
+    tds3[3].setAttribute(`title`, `${table_obj.jzcsyl}`);
+    tds3[5].setAttribute(`title`, `${table_obj.ltgb}`);
+    //tr3
+});
 
 
 
@@ -351,136 +417,8 @@ setTimeout(() => {
     const sf_num= `otcfast01`;
     const url = `http://10.1.5.202/webservice/fastview/otc/${sf_num}/`;
     let uid = `newly_added_listing_hs_container`;
-    let hs_datas = NSB_TS_FV.Modules.newlyAddedListing(url, true, uid);
-    // console.log(`hs_datas = \n`, JSON.stringify(hs_datas, null, 4));
-    // profitForecast(url, true, uid);
-    // let hs_container_uid = document.querySelector(`[data-hs-container="data-profit-forecast-container-uid"]`);
-    // setTimeout(() => {
-    //     newlyAddedListingHC(hs_datas, uid);
-    // }, 0);
+    let hs_datas = NSB_TS_FV.Modules.newlyAddedListing(url, false, uid);
 }, 0);
-
-
-/* 
-
-    recurve 反
-    Reverse 逆序
-    let a = [1,2,3,4,5,6,7,8,9],
-        l = a.length;
-        aa = a.map(
-        (key, index) => {
-            console.log(`key, index = \n`, key, index);
-            let ni = l - 1 - index;
-            console.log(`new index = \n`, ni);
-            return a[ni];
-        }
-    );
-    aa;
-    // [9, 8, 7, 6, 5, 4, 3, 2, 1]
-
-    // aa = a.map((k, i) => a[a.length - 1 - i]);
-*/
-
-
-
-/* 
-
-    plotOptions: {
-        series: {
-            cursor: 'pointer',
-            events: {
-                click: function (event) {
-                    alert(
-                        this.name + ' 被点击了\n' +
-                        '最近点：' + event.point.category + '\n' +
-                        'Y点：' + event.point.y + '\n' + 
-                        'X点：' + event.point.x+ '\n' + 
-                        'Alt 键: ' + event.altKey + '\n' +
-                        'Ctrl 键: ' + event.ctrlKey + '\n' +
-                        'Meta 键（win 键）： ' + event.metaKey + '\n' +
-                        'Shift 键：' + event.shiftKey
-                    );
-                }
-            }
-        }
-    },
-
-    https://api.highcharts.com/highcharts/plotOptions.bubble.events.click
-
-    http://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/plotoptions/series-events-click/
-
-
-    Highcharts.chart('container', {
-        xAxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-        },
-
-        plotOptions: {
-            series: {
-                cursor: 'pointer',
-                events: {
-                    click: function (event) {
-                        alert(
-                            this.name + ' clicked\n' +
-                            'Alt: ' + event.altKey + '\n' +
-                            'Control: ' + event.ctrlKey + '\n' +
-                            'Meta: ' + event.metaKey + '\n' +
-                            'Shift: ' + event.shiftKey +
-                            "\nX: "+ event.point.x + 
-                            "\nY: "+event.point.y
-                        );
-                        console.log(`event = \n`, event);
-                        console.log(`event.point = \n`, event.point);
-                    }
-                }
-            }
-        },
-
-        series: [{
-            data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
-        }]
-    });
-
-*/
-
-
-
-/* 
-let new_json = {},
-    new_json_values =[];
-json_keys = json_keys.sort();
-json_keys.map(
-    (key, i) => {
-        if (debug) {
-            // console.log(`key = \n`, key);
-            console.log(`json[key] = \n`, json[key]);
-            // {gpjs: 12, zqdm: "872352", zqjc: "开元新材", sshy: "非金属矿物制品业", zbqs: "长江证券", …}
-            const {
-                mgsy: x,
-                mgjzc: y,
-                zgb: z,
-                zqjc: name,
-                zqdm: code
-            } = {...json[key]};
-            const new_obj = Object.assign(
-                {},
-                {
-                    x,
-                    y,
-                    z,
-                    name,
-                    code
-                }
-            );
-            console.log(`new_obj =\n`, new_obj);
-            // {x: -0.21, y: 0.87, z: 20000000, name: "思源软件", code: "872343"}
-        }
-        // new_json_values.push();
-    }
-);
-
- */
-
 
 
 
