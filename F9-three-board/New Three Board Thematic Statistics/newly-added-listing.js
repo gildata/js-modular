@@ -55,7 +55,7 @@ NSB_TS_FV.Modules.newlyAddedListing = NSB_TS_FV.Modules.newlyAddedListing || ((u
                 json_keys = Object.keys(json).sort();
                 json_values = Object.values(json);
                 // show new add num
-                let new_add = document.querySelector(`[data-ntb-new-add-num="ntb-new-add-num"]`);
+                let new_add = document.querySelector(`[data-ntb-new-add-num="ntb-new-add-num-listing"]`);
                 // new_add.innerHTML = json[json_keys[0]]["gpjs"];
                 new_add.innerHTML = json_values[0]["gpjs"];
                 // table
@@ -368,9 +368,9 @@ NSB_TS_FV.Modules.newlyAddedListing.showTable = NSB_TS_FV.Modules.newlyAddedList
     if (debug) {
         console.log(`table_obj`, JSON.stringify(table_obj, null, 4));
     }
-    let sa = document.querySelector(`[data-ntb-th-title="Securities-Abbreviation"]`),
-        sc = document.querySelector(`[data-ntb-th-title="Securities-Code"]`),
-        // new_add = document.querySelector(`[data-ntb-new-add-num="ntb-new-add-num"]`),
+    let sa = document.querySelector(`[data-ntb-th-title="Securities-Abbreviation-listing"]`),
+        sc = document.querySelector(`[data-ntb-th-title="Securities-Code-listing"]`),
+        // new_add = document.querySelector(`[data-ntb-new-add-num="ntb-new-add-num-listing"]`),
         tb = document.querySelector(`[data-table-body="ntb-table-body-newly-added-listing"]`);
     // let tr1 = tb.firstElementChild;
     // let tr3 = tb.lastElementChild;
