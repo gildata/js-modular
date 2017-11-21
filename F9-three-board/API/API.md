@@ -1,14 +1,56 @@
-http://10.1.5.202/webservice/fastview/otc/参数
+# NTB
 
+> 新三板 F9
+
+
+NTB_F9
+
+
+
+
+http://10.1.5.202/webservice/fastview/otc/参数
 
 http://10.1.5.202/webservice/fastview/otc/otcfast01
 
-
 http://10.1.5.202/webservice/fastview/stock/stockfast01/600570.SH
 
+http://10.1.5.202/information/newsinfo/
 
 
-# 新三板专题统计 New Sanbanxi Thematic statistics (nsbts)
+
+
+mainboard 主板
+
+New Sanbanxi 新三板
+
+全国中小企业股份转让系统(英语：National Equities Exchange and Quotations),
+
+股票/股权 报价
+
+俗称新三板,
+是经中华人民共和国国务院批准设立的中国大陆证券交易场所,
+为非上市股份有限公司的股份公开转让、融资、并购等相关业务提供服务。它是中国大陆除上海证券交易所、深圳证券交易所之外的第三家全国性证券交易场所。
+
+https://zh.wikipedia.org/wiki/%E4%B8%8A%E6%B5%B7%E8%AF%81%E5%88%B8%E4%BA%A4%E6%98%93%E6%89%80
+
+2009年8月10日发布的《上海证券交易所证券代码分配规则》规定，上证所证券代码采用六位阿拉伯数字编码，取值范围为000000-999999。
+六位代码的前三位为证券种类标识区，其中第一位为证券产品标识，第二位至第三位为证券业务标识，六位代码的后三位为顺序编码区。
+首位代码代表的产品定义分别为：0国债／指数、1债券、2回购、3期货、4备用、5基金／权证、6A股、7非交易业务（发行、权益分配）、8备用、9B股
+
+http://www.sse.com.cn/
+
+https://zh.wikipedia.org/wiki/%E6%B7%B1%E5%9C%B3%E8%AF%81%E5%88%B8%E4%BA%A4%E6%98%93%E6%89%80
+
+http://www.szse.cn/
+
+
+
+# 新三板专题统计 New Three Board Thematic Statistics (NTB_TS)
+
+> 新三板专题统计/三板速览
+
+
+NTB_TS
 
 
 参数：		
@@ -225,10 +267,12 @@ otcfast08:
      */
     private int sbjs;
     /**
-     * 标识(合计，协议，做市)
+     * 标识(合计,
+     做市)
      */
     private String bz;
-otcfast09:
+otcfast09:,
+
 
     /**
      * 成交家数

@@ -88,3 +88,28 @@
 [data-fv-th-link="fv-link-detials"]::after {
     content: ">>"
 }
+
+
+/* table */
+
+[data-td-key="fv-td-key"] {
+    width: calc(1*100px);
+    background-color: #333;
+}
+
+[data-td-value="fv-td-value"] {
+    color: red;
+}
+
+[data-td="fv-cols-span"] {
+    width: calc(2*100px);
+    background-color: #ccc;
+    /* colspan="3" */
+}
+
+table,
+tr,
+td {
+    margin: 0;
+    padding: 0;
+}

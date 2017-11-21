@@ -148,6 +148,7 @@ NSB_TS_FV.Modules.newlyAddedListingHC = NSB_TS_FV.Modules.newlyAddedListingHC ||
         yAxisColor: `#FFB400`,
     };
     const {color, colors, optioncolor, gridColor, legendColor, yAxisColor} = {...chart_css};
+    // webpack / rollup
     console.log(`Highcharts datas =\n`, datas);
     console.log(`%c Highcharts container_uid =`, `color: #f0f; font-size: 23px;`, container_uid);
     /* 
