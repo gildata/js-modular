@@ -67,6 +67,12 @@ http://www.szse.cn/
 > 新三板专题统计/三板速览
 
 
+/usr/local/apache2/webapps/stock/f9/fastview/Modules
+
+/usr/local/apache2/webapps/
+
+
+
 ## NameSpace
 
 > NTB_TS
@@ -88,14 +94,15 @@ NTB_TS.Modal
     // sort table
     otcfast03	交易排行榜 transactions-leaderboard /trading-rankings
     // 交易排行榜-协议 xy & 交易排行榜-做市 zs
-
+```js
+    NSB_TS_FV.Modules.additionalIssuesPreplan.init(`https://cdn.xgqfrms.xyz/json/ntb_ts/04.json`);
+    NSB_TS_FV.Modules.transactionsLeaderboard.init(`https://cdn.xgqfrms.xyz/json/ntb_ts/03.json`);
+```
     // tabs
     otcfast04	增发事项-预案 additional-issues-preplan
     otcfast05	增发事项-实施 additional-issues-implementation
     // 代码 简称 预计募集金额(万元)/ 实际募集金额(万元)
-```js
-    NSB_TS_FV.Modules.additionalIssuesPreplan.init(`https://cdn.xgqfrms.xyz/json/ntb_ts/04.json`);
-```
+
     // tabs
     otcfast06	分红事项-预案 dividend-matters-preplan
     otcfast07	分红事项-实施 dividend-matters-implementation

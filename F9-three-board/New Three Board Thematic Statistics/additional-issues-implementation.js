@@ -68,7 +68,7 @@ NSB_TS_FV.Modules.additionalIssuesImplementation = NSB_TS_FV.Modules.additionalI
 // additionalIssuesImplementation.showTable
 NSB_TS_FV.Modules.additionalIssuesImplementation.showTable = NSB_TS_FV.Modules.additionalIssuesImplementation.showTable || (
     (datas = {}, debug = false) => {
-        if (!debug) {
+        if (debug) {
             console.log(`datas = \n`, JSON.stringify(datas, null, 4));
         }
         const {
@@ -97,7 +97,7 @@ NSB_TS_FV.Modules.additionalIssuesImplementation.showTable = NSB_TS_FV.Modules.a
             }
             tds[0].innerHTML = order_arr[0][i];
             tds[1].innerHTML = order_arr[1][i];
-            tds[2].innerHTML = order_arr[1][i];
+            tds[2].innerHTML = order_arr[2][i];
             // DOM in JS ???
             /*
                 <tr data-table-tr="ntb-table-tr-additional-issues-implementation" data-table-tbody-tr="ntb-table-tbody-tr-additional-issues-implementation">

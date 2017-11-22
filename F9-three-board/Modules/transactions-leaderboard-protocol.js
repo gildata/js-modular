@@ -2,7 +2,7 @@
 
 /**
  * @namespace NSB_TS_FV : New San Ban Thematic Statistics
- * @name additional-issues-preplan 今日定增-预案
+ * @name transactions-leaderboard-protocol 交易排行榜-协议
  * @createed 2017.11.21
  * @author xgqfrms
  * @copyright Gildata, Inc 2017-present
@@ -17,8 +17,8 @@
 var NSB_TS_FV = NSB_TS_FV || {};
 // sub namespaces
 NSB_TS_FV.Modules = NSB_TS_FV.Modules || {};
-// additionalIssuesPreplan
-NSB_TS_FV.Modules.additionalIssuesPreplan = NSB_TS_FV.Modules.additionalIssuesPreplan || ((url = ``, debug = false) => {
+// transactionsLeaderboardProtocol
+NSB_TS_FV.Modules.transactionsLeaderboardProtocol = NSB_TS_FV.Modules.transactionsLeaderboardProtocol || ((url = ``, debug = false) => {
     let result_obj = {};
     fetch(url)
     .then(res => res.json())
@@ -58,15 +58,15 @@ NSB_TS_FV.Modules.additionalIssuesPreplan = NSB_TS_FV.Modules.additionalIssuesPr
                 }
             }
             // array
-            NSB_TS_FV.Modules.additionalIssuesPreplan.showTable(result_obj, false);
+            NSB_TS_FV.Modules.transactionsLeaderboardProtocol.showTable(result_obj, false);
         }
     )
     .catch(error => console.log(`error = \n`, error));
     // return result_obj;
 });
 
-// additionalIssuesPreplan.showTable
-NSB_TS_FV.Modules.additionalIssuesPreplan.showTable = NSB_TS_FV.Modules.additionalIssuesPreplan.showTable || (
+// transactionsLeaderboardProtocol.showTable
+NSB_TS_FV.Modules.transactionsLeaderboardProtocol.showTable = NSB_TS_FV.Modules.transactionsLeaderboardProtocol.showTable || (
     (datas = {}, debug = false) => {
         if (debug) {
             console.log(`datas = \n`, JSON.stringify(datas, null, 4));
@@ -82,7 +82,7 @@ NSB_TS_FV.Modules.additionalIssuesPreplan.showTable = NSB_TS_FV.Modules.addition
             preplan_brief,
             preplan_amount
         ];
-        let trs = document.querySelectorAll(`[data-table-tbody-tr="ntb-table-tbody-tr-additional-issues-preplan"]`);
+        let trs = document.querySelectorAll(`[data-table-tbody-tr="ntb-table-tbody-tr-additional-issues-implementation"]`);
         if (debug) {
             console.log(`trs = \n`, trs);
             console.log(`trs[0] = \n`, trs[0]);
@@ -100,7 +100,7 @@ NSB_TS_FV.Modules.additionalIssuesPreplan.showTable = NSB_TS_FV.Modules.addition
             tds[2].innerHTML = order_arr[2][i];
             // DOM in JS ???
             /*
-                <tr data-table-tr="ntb-table-tr-additional-issues-preplan" data-table-tbody-tr="ntb-table-tbody-tr-additional-issues-preplan">
+                <tr data-table-tr="ntb-table-tr-additional-issues-implementation" data-table-tbody-tr="ntb-table-tbody-tr-additional-issues-implementation">
                     <td data-td-value="ntb-td-value"></td>
                     <td data-td-value="ntb-td-value"></td>
                     <td data-td-value="ntb-td-value"></td>
@@ -111,16 +111,12 @@ NSB_TS_FV.Modules.additionalIssuesPreplan.showTable = NSB_TS_FV.Modules.addition
 );
 
 // init
-NSB_TS_FV.Modules.additionalIssuesPreplan.init = NSB_TS_FV.Modules.additionalIssuesPreplan.init || (
-    (url = `http://10.1.5.202/webservice/fastview/otc/otcfast04/`) => {
-        let hs_datas = NSB_TS_FV.Modules.additionalIssuesPreplan(url, false);
+NSB_TS_FV.Modules.transactionsLeaderboardProtocol.init = NSB_TS_FV.Modules.transactionsLeaderboardProtocol.init || (
+    (url = `http://10.1.5.202/webservice/fastview/otc/otcfast03/`) => {
+        let hs_datas = NSB_TS_FV.Modules.transactionsLeaderboardProtocol(url, false);
     }
 );
 
 // call init
-NSB_TS_FV.Modules.additionalIssuesPreplan.init(`http://10.1.5.202/webservice/fastview/otc/otcfast04/`);
-
-
-
-
+NSB_TS_FV.Modules.transactionsLeaderboardProtocol.init(`http://10.1.5.202/webservice/fastview/otc/otcfast03/`);
 
