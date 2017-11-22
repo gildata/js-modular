@@ -84,15 +84,24 @@ NTB_TS.Modal
 参数：
     otcfast01	新增挂牌 newly-added-listing
     otcfast02	新增协议 newly-added-protocol // No Data
+
+    // sort table
     otcfast03	交易排行榜 transactions-leaderboard /trading-rankings
+    // 交易排行榜-协议 xy & 交易排行榜-做市 zs
+
+    // tabs
     otcfast04	增发事项-预案 additional-issues-preplan
     otcfast05	增发事项-实施 additional-issues-implementation
+    // tabs
     otcfast06	分红事项-预案 dividend-matters-preplan
     otcfast07	分红事项-实施 dividend-matters-implementation
+
     otcfast08	挂牌情况 listing-situation
     otcfast09	成交概况 transaction-overview
+    // highcharts
     otcfast10	成交走势-做市图 turnover-trend-make-market-diagram
     otcfast11	成交走势-协议图 turnover-trend-protocol-diagram
+    //
     news	    公司新闻 new-sb-thematic-statistics-news
     bulletion	公司公告 new-sb-thematic-statistics-bulletin
 
