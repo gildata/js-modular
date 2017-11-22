@@ -3,15 +3,15 @@
 /**
  * @namespace NSB_TS_FV : New San Ban Thematic Statistics
  * @name listing-situation 挂牌情况
- * @createed 2017.11.21 
+ * @createed 2017.11.21
  * @author xgqfrms
  * @copyright Gildata, Inc 2017-present
- * @license MIT 
+ * @license MIT
  * @version v1.1.1
- * 
- * @param {* String} url 
+ *
+ * @param {* String} url
  * @param {* DOM Element} uid
- * @param {* Boolean} debug 
+ * @param {* Boolean} debug
  */
 
 // namespaces
@@ -20,7 +20,7 @@ var NSB_TS_FV = NSB_TS_FV || {};
 NSB_TS_FV.Modules = NSB_TS_FV.Modules || {};
 
 
-/* 
+/*
 
 NSB_TS_FV.Modules.listingSituation = NSB_TS_FV.Modules.listingSituation || (() => console.log(`module testing!`));
 // () => console.log(`module testing!`)
@@ -111,7 +111,7 @@ NSB_TS_FV.Modules.listingSituation.showTable = NSB_TS_FV.Modules.listingSituatio
         } = datas;
         let order_arr = [listed_number, new_add_listed_number, waiting_number, reporting_number];
         let trs = document.querySelectorAll(`[data-table-tbody-tr="ntb-table-tbody-tr-listing-situation"]`);
-        /* 
+        /*
             // data-table-tr & data-table-tbody-tr ??? can not duplication ??? data-*-name
             let trs = document.querySelectorAll(`[data-table-tr="ntb-table-tbody-tr-listing-situation"]`);
             // []
@@ -175,7 +175,7 @@ setTimeout(() => {
 
 
 
-/* 
+/*
 
 const data = [
     {

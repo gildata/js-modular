@@ -92,9 +92,14 @@ NTB_TS.Modal
     // tabs
     otcfast04	增发事项-预案 additional-issues-preplan
     otcfast05	增发事项-实施 additional-issues-implementation
+    // 代码 简称 预计募集金额(万元)/ 实际募集金额(万元)
+```js
+    NSB_TS_FV.Modules.additionalIssuesPreplan.init(`https://cdn.xgqfrms.xyz/json/ntb_ts/04.json`);
+```
     // tabs
     otcfast06	分红事项-预案 dividend-matters-preplan
     otcfast07	分红事项-实施 dividend-matters-implementation
+    // 代码 简称 方案说明
 
     otcfast08	挂牌情况 listing-situation
     otcfast09	成交概况 transaction-overview
