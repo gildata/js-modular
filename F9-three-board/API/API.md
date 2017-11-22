@@ -76,8 +76,12 @@ NTB_TS.Utils
 NTB_TS.Modal
 
 
+备注：在涨跌幅和成交额做个可以自动排序的功能
 
-参数：		
+// ??? auto order filter
+
+
+参数：
     otcfast01	新增挂牌 newly-added-listing
     otcfast02	新增协议 newly-added-protocol // No Data
     otcfast03	交易排行榜 transactions-leaderboard /trading-rankings
@@ -334,7 +338,7 @@ otcfast03:分xy:协议和zs:做市
      * 成交额
      */
     private String cje;
-       
+
 otcfast04:
          /**
      * 证券代码
