@@ -71,6 +71,12 @@ http://www.szse.cn/
 
 /usr/local/apache2/webapps/
 
+/usr/local/apache2/webapps/xsb/ntb-zs
+
+/usr/local/apache2/webapps/xsb/f9
+
+
+
 
 
 ## NameSpace
