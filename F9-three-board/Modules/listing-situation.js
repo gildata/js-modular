@@ -103,6 +103,29 @@ NSB_TS_FV.Modules.listingSituation = NSB_TS_FV.Modules.listingSituation || ((url
 NSB_TS_FV.Modules.listingSituation.showTable = NSB_TS_FV.Modules.listingSituation.showTable || (
     (datas = {}, uid = ``, debug = false) => {
         console.log(`datas = \n`, JSON.stringify(datas, null, 4));
+        const {
+            listed_number,
+            new_add_listed_number,
+            waiting_number,
+            reporting_number
+        } = datas;
+        let order_arr = [listed_number, new_add_listed_number, waiting_number, reporting_number];
+        let trs = document.querySelectorAll(`[data-table-tbody-tr="ntb-table-tbody-tr-listing-situation"]`);
+        /* 
+            // data-table-tr & data-table-tbody-tr ??? can not duplication ??? data-*-name
+            let trs = document.querySelectorAll(`[data-table-tr="ntb-table-tbody-tr-listing-situation"]`);
+            // []
+            let trs = document.querySelectorAll(`[data-table-tbody-tr="ntb-table-tbody-tr-listing-situation"]`);
+            // (3) [tr, tr, tr]
+        */
+        for (let i = 0; i < trs.length; i++) {
+            // const tr1_tds = trs[i].children;
+            let tds = ``;
+            tds = trs[i].querySelectorAll(`[data-td-value="ntb-td-value"]`);
+            for (let ii = 0; ii < tds.length; ii++) {
+                tds[ii].innerHTML = order_arr[i][ii];
+            }
+        }
     }
 );
 
