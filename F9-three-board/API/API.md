@@ -2,7 +2,61 @@
 
 > 新三板 F9
 
+```js
 
+
+try {
+    import { xxx } from "module";
+} catch (error) {
+    console.log(`error = \n`,err);
+}
+
+if("export" in window && "import" in window){
+    //
+}
+
+if("import" in window){
+    const css = `
+        color: #0f0;
+        font-size: 23px;
+    `;
+    console.log(`%c Hooray! You are using a modern browser!(Chrome)`, css);
+    // fallback
+    console.log(`Hooray, you are using a modern browser!`);
+}else{
+    const css = `
+        color: #f00;
+        font-size: 23px;
+    `;
+    console.log(`%c Oh, really shit! You are using an outdated browser!(IE)`, css);
+}
+
+if("export" in window){
+    const css = `
+        color: #0f0;
+        font-size: 23px;
+    `;
+    console.log(`%c Hooray! You are using a modern browser!`, css);
+    // fallback
+    console.log(`Hooray, you are using a modern browser!`);
+}else{
+    const css = `
+        color: #f00;
+        font-size: 23px;
+    `;
+    console.log(`%c Oh, really shit! You are using an outdated browser!`, css);
+}
+
+
+try {
+    export default xxx;
+    export {xxx};
+} catch (error) {
+    console.log(`error = \n`,err);
+}
+
+
+```
 
 
 ## NameSpace
@@ -74,6 +128,8 @@ http://www.szse.cn/
 /usr/local/apache2/webapps/xsb/ntb-zs
 
 /usr/local/apache2/webapps/xsb/f9
+
+http://10.1.5.202/stock/f9/fastview/sidebar.html
 
 
 

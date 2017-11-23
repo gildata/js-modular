@@ -29,7 +29,7 @@ NSB_TS_FV.Modules.transactionsLeaderboard = NSB_TS_FV.Modules.transactionsLeader
                     console.log(`json = \n`, json);
                     console.log(`keys = \n`, Object.keys(json));
                 }
-                let data_market = json[ "zs"] || [],
+                let data_market = json["zs"] || [],
                     data_protocol = json["xy"] || [];
                 // reusable dataHandler
                 const dataHandler = (arr = []) => {

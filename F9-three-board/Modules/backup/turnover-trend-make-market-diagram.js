@@ -17,16 +17,9 @@
 var NSB_TS_FV = NSB_TS_FV || {};
 // sub namespaces
 NSB_TS_FV.Modules = NSB_TS_FV.Modules || {};
-
-/*
-
-turnoverTrendDiagrams
-
-*/
 // turnoverTrendMakeMarketDiagram
 NSB_TS_FV.Modules.turnoverTrendMakeMarketDiagram = NSB_TS_FV.Modules.turnoverTrendMakeMarketDiagram || ((url = ``, uids = {}, debug = false) => {
     let result_obj = {};
-    // urls ???
     fetch(url)
     .then(res => res.json())
     .then(
@@ -34,91 +27,66 @@ NSB_TS_FV.Modules.turnoverTrendMakeMarketDiagram = NSB_TS_FV.Modules.turnoverTre
             if (json !== undefined && typeof(json) === "object") {
                 if (debug) {
                     console.log(`json = \n`, json);
-                    // array
-                    // console.log(`json = \n`, json.slice(0, 3));
+                    console.log(`keys = \n`, Object.keys(json));
                 }
-                let arr = json || [],
-                    temp_sort_arr = [];
-                for (let i = 0; i < arr.length; i++) {
-                    temp_sort_arr.push(arr[i]["rq"]);
-                }
-                temp_sort_arr = temp_sort_arr.sort();
-                if (debug) {
-                    // console.log(`temp_sort_arr = \n`, temp_sort_arr);
-                    console.log(`temp_sort_arr = \n`, temp_sort_arr.slice(0, 4));
-                }
-                const sortArrayObjectsHandler = (objs_arr = [], sort_arr = [], debug = false) => {
+                let data_market = json[ "zs"] || [],
+                    data_protocol = json["xy"] || [];
+                // reusable dataHandler
+                const dataHandler = (arr = []) => {
                     if (debug) {
-                        console.log(`arr = \n`, objs_arr);
-                        console.log(`sort_arr = \n`, sort_arr);
-                        // console.log(`arr keys = \n`, Object.keys(arr[0]));
+                        console.log(`arr = \n`, arr);
+                        console.log(`arr keys = \n`, Object.keys(arr[0]));
                     }
-                    let turnover_time = [],
-                        turnover_number = [],
-                        turnover_amount = [];
-                    for (let i = 0; i < sort_arr.length; i++) {
-                        objs_arr.map(
-                            (obj, ii) => {
-                                if (obj["rq"] === temp_sort_arr[i]) {
-                                    if (debug && ii === 0) {
-                                        console.log(`obj["rq"] = \n`, obj["rq"], ii);
-                                        console.log(`temp_sort_arr[i] = \n`, temp_sort_arr[i], i);
-                                    }
-                                    turnover_time.push(obj["rq"]);
-                                    turnover_number.push(obj["cjl"]);
-                                    turnover_amount.push(obj["cje"]);
-                                }else{
-                                    // break
-                                }
+                    let ranking_code = [],
+                        ranking_brief = [],
+                        ranking_amplitude = [],
+                        ranking_amount = [];
+                    arr.map(
+                        (obj, i) => {
+                            if (debug && (i === 0)) {
+                                console.log(`obj = \n`, JSON.stringify(obj, null, 4));
                             }
-                        );
-                        if (debug  && i === 3) {
-                            console.log(`turnover_time = \n`, turnover_time);
-                            console.log(`turnover_number = \n`, turnover_number);
-                            console.log(`turnover_amount = \n`, turnover_amount);
+                            // ["zqdm", "zqjc", "zdf", "cje"]
+                            ranking_code.push(obj["zqdm"]);
+                            ranking_brief.push(obj["zqjc"]);
+                            ranking_amplitude.push(obj["zdf"]);
+                            ranking_amount.push(obj["cje"]);
                         }
-                    }
+                    );
                     const new_obj = {
-                        turnover_time,
-                        turnover_number,
-                        turnover_amount
+                        ranking_code,
+                        ranking_brief,
+                        ranking_amplitude,
+                        ranking_amount
                     };
-                    if (!debug) {
+                    if (debug) {
                         console.log(`new_obj = \n`, JSON.stringify(new_obj, null, 4));
                     }
                     return new_obj;
                 };
-                // let obj_market = sortArrayObjectsHandler(arr, temp_sort_arr) || {},
-                //     obj_protocol = dsortArrayObjectsHandler(arr, temp_sort_arr) || {};
-                let obj_market = sortArrayObjectsHandler(arr, temp_sort_arr) || {};
-                // let obj_protocol = sortArrayObjectsHandler(arr, temp_sort_arr) || {};
+                let obj_market = dataHandler(data_market) || {},
+                    obj_protocol = dataHandler(data_protocol) || {};
                 if (debug) {
                     console.log(`obj_market = \n`, obj_market);
-                    // console.log(`obj_protocol = \n`, obj_protocol);
+                    console.log(`obj_protocol = \n`, obj_protocol);
                     // console.log(`obj_market = \n`, JSON.stringify(obj_market, null, 4));
                     // console.log(`obj_protocol = \n`, JSON.stringify(obj_protocol, null, 4));
                 }
-                // Object.assign(result_obj, {obj_market, obj_protocol});
-                // if (debug) {
-                //     console.log(`result_obj = \n`, JSON.stringify(result_obj, null, 4));
-                // }
-                let market_uid = uids.market_uid;
-                // let market_uid = uids.market_uid,
-                //     protocol_uid = uids.protocol_uid;
+                Object.assign(result_obj, {obj_market, obj_protocol});
+                if (debug) {
+                    console.log(`result_obj = \n`, JSON.stringify(result_obj, null, 4));
+                }
+                let market_uid = uids.market_uid,
+                    protocol_uid = uids.protocol_uid;
                 // result_obj ??? no need
                 NSB_TS_FV.Modules.turnoverTrendMakeMarketDiagram.showTable(obj_market, market_uid, false);
-                // NSB_TS_FV.Modules.turnoverTrendProtocolDiagram.showTable(obj_protocol, protocol_uid, false);
+                NSB_TS_FV.Modules.turnoverTrendProtocolDiagram.showTable(obj_protocol, protocol_uid, false);
             }
         }
     )
     .catch(error => console.log(`error = \n`, error));
     // return result_obj;
 });
-
-
-
-NSB_TS_FV.Modules.turnoverTrendMakeMarketDiagram(`http://10.1.5.202/webservice/fastview/otc/otcfast10`, `#turnover_trend_make_market_diagram_hs_container`, false);
-
 
 
 /**
@@ -140,7 +108,6 @@ NSB_TS_FV.Modules = NSB_TS_FV.Modules || {};
 // turnoverTrendProtocolDiagram
 NSB_TS_FV.Modules.turnoverTrendProtocolDiagram = NSB_TS_FV.Modules.turnoverTrendProtocolDiagram || ((url = ``, uids = {}, debug = false) => {
     let result_obj = {};
-    // urls ???
     fetch(url)
     .then(res => res.json())
     .then(
@@ -148,92 +115,76 @@ NSB_TS_FV.Modules.turnoverTrendProtocolDiagram = NSB_TS_FV.Modules.turnoverTrend
             if (json !== undefined && typeof(json) === "object") {
                 if (debug) {
                     console.log(`json = \n`, json);
-                    // array
-                    // console.log(`json = \n`, json.slice(0, 3));
+                    console.log(`keys = \n`, Object.keys(json));
                 }
-                let arr = json || [],
-                    temp_sort_arr = [];
-                for (let i = 0; i < arr.length; i++) {
-                    temp_sort_arr.push(arr[i]["rq"]);
-                }
-                temp_sort_arr = temp_sort_arr.sort();
-                if (debug) {
-                    // console.log(`temp_sort_arr = \n`, temp_sort_arr);
-                    console.log(`temp_sort_arr = \n`, temp_sort_arr.slice(0, 4));
-                }
-                const sortArrayObjectsHandler = (objs_arr = [], sort_arr = [], debug = false) => {
+                let data_market = json[ "zs"] || [],
+                    data_protocol = json["xy"] || [];
+                // reusable dataHandler
+                const dataHandler = (arr = []) => {
                     if (debug) {
-                        console.log(`arr = \n`, objs_arr);
-                        console.log(`sort_arr = \n`, sort_arr);
-                        // console.log(`arr keys = \n`, Object.keys(arr[0]));
+                        console.log(`arr = \n`, arr);
+                        console.log(`arr keys = \n`, Object.keys(arr[0]));
                     }
-                    let turnover_time = [],
-                        turnover_number = [],
-                        turnover_amount = [];
-                    for (let i = 0; i < sort_arr.length; i++) {
-                        objs_arr.map(
-                            (obj, ii) => {
-                                if (obj["rq"] === temp_sort_arr[i]) {
-                                    if (debug && ii === 0) {
-                                        console.log(`obj["rq"] = \n`, obj["rq"], ii);
-                                        console.log(`temp_sort_arr[i] = \n`, temp_sort_arr[i], i);
-                                    }
-                                    turnover_time.push(obj["rq"]);
-                                    turnover_number.push(obj["cjl"]);
-                                    turnover_amount.push(obj["cje"]);
-                                }else{
-                                    // break
-                                }
+                    let ranking_code = [],
+                        ranking_brief = [],
+                        ranking_amplitude = [],
+                        ranking_amount = [];
+                    arr.map(
+                        (obj, i) => {
+                            if (debug && (i === 0)) {
+                                console.log(`obj = \n`, JSON.stringify(obj, null, 4));
                             }
-                        );
-                        if (debug  && i === 3) {
-                            console.log(`turnover_time = \n`, turnover_time);
-                            console.log(`turnover_number = \n`, turnover_number);
-                            console.log(`turnover_amount = \n`, turnover_amount);
+                            // ["zqdm", "zqjc", "zdf", "cje"]
+                            ranking_code.push(obj["zqdm"]);
+                            ranking_brief.push(obj["zqjc"]);
+                            ranking_amplitude.push(obj["zdf"]);
+                            ranking_amount.push(obj["cje"]);
                         }
-                    }
+                    );
                     const new_obj = {
-                        turnover_time,
-                        turnover_number,
-                        turnover_amount
+                        ranking_code,
+                        ranking_brief,
+                        ranking_amplitude,
+                        ranking_amount
                     };
-                    if (!debug) {
+                    if (debug) {
                         console.log(`new_obj = \n`, JSON.stringify(new_obj, null, 4));
                     }
                     return new_obj;
                 };
-                // let obj_market = sortArrayObjectsHandler(arr, temp_sort_arr) || {},
-                //     obj_protocol = dsortArrayObjectsHandler(arr, temp_sort_arr) || {};
-                let obj_market = sortArrayObjectsHandler(arr, temp_sort_arr) || {};
-                // let obj_protocol = sortArrayObjectsHandler(arr, temp_sort_arr) || {};
+                let obj_market = dataHandler(data_market) || {},
+                    obj_protocol = dataHandler(data_protocol) || {};
                 if (debug) {
                     console.log(`obj_market = \n`, obj_market);
-                    // console.log(`obj_protocol = \n`, obj_protocol);
+                    console.log(`obj_protocol = \n`, obj_protocol);
                     // console.log(`obj_market = \n`, JSON.stringify(obj_market, null, 4));
                     // console.log(`obj_protocol = \n`, JSON.stringify(obj_protocol, null, 4));
                 }
-                // Object.assign(result_obj, {obj_market, obj_protocol});
-                // if (debug) {
-                //     console.log(`result_obj = \n`, JSON.stringify(result_obj, null, 4));
-                // }
-                let market_uid = uids.market_uid;
-                // let market_uid = uids.market_uid,
-                //     protocol_uid = uids.protocol_uid;
+                Object.assign(result_obj, {obj_market, obj_protocol});
+                if (debug) {
+                    console.log(`result_obj = \n`, JSON.stringify(result_obj, null, 4));
+                }
+                /*
+                    const uids = {
+                        "market_uid": `[data-table-market="ntb-table-body-turnover-trend-protocol-diagram"]`,
+                        "protocol_uid": `[data-table-protocol="ntb-table-body-turnover-trend-protocol-diagram"]`
+                    };
+                    let market_tbody = document.querySelector(uids.market_uid);
+                    let protocol_tbody = document.querySelector(uids.protocol_uid);
+                    let xxx_tbody = document.querySelector(uids.xxx_uid);
+                */
+                // ??? this.uids ???
+                let market_uid = uids.market_uid,
+                    protocol_uid = uids.protocol_uid;
                 // result_obj ??? no need
-                NSB_TS_FV.Modules.turnoverTrendMakeMarketDiagram.showTable(obj_market, market_uid, false);
-                // NSB_TS_FV.Modules.turnoverTrendProtocolDiagram.showTable(obj_protocol, protocol_uid, false);
+                NSB_TS_FV.Modules.turnoverTrendProtocolDiagram.showTable(obj_market, market_uid, false);
+                NSB_TS_FV.Modules.turnoverTrendProtocolDiagram.showTable(obj_protocol, protocol_uid, false);
             }
         }
     )
     .catch(error => console.log(`error = \n`, error));
     // return result_obj;
 });
-
-
-NSB_TS_FV.Modules.turnoverTrendProtocolDiagram(`http://10.1.5.202/webservice/fastview/otc/otcfast10`, `#turnover_trend_protocol_diagram_hs_container`, false);
-
-
-
 
 // init
 NSB_TS_FV.Modules.turnoverTrendProtocolDiagram.init = NSB_TS_FV.Modules.turnoverTrendProtocolDiagram.init || (
@@ -663,6 +614,14 @@ NSB_TS_FV.Modules.turnoverTrendProtocolDiagram.init(`http://10.1.5.202/webservic
 
 
 
+
+/*
+
+turnover_trend_make_market_diagram_hs_container
+
+turnover_trend_protocol_diagram_hs_container
+
+*/
 
 
 

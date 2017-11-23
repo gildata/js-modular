@@ -40,7 +40,7 @@ $(function () {
                     },
                     zIndex: 3
                 },
-                // x line 2 
+                // x line 2
             ]
         },
         yAxis: {
@@ -112,7 +112,7 @@ $(function () {
                             'Control: ' + event.ctrlKey + '\n' +
                             'Meta: ' + event.metaKey + '\n' +
                             'Shift: ' + event.shiftKey +
-                            "\nX: "+ event.point.x + 
+                            "\nX: "+ event.point.x +
                             "\nY: "+event.point.y
                         );
                         console.log(`event = \n`, event);
