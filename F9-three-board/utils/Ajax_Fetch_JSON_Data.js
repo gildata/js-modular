@@ -65,11 +65,11 @@ NSB_TS.Utils.AFJD = NSB_TS.Utils.AFJD || ((url = ``, debug = false) => {
 
 
 /**
- * @example AFJDAFJD_OP({url: `https://cdn.xgqfrms.xyz/json/data.json`});
+ * @example AFJD_OP({url: `https://cdn.xgqfrms.xyz/json/data.json`});
  */
 
 // object params
-NSB_TS.Utils.AFJD_OP = NSB_TS.Utils.AFJDAFJD_OP || (({
+NSB_TS.Utils.AFJD_OP = NSB_TS.Utils.AFJD_OP || (({
     url,
     debug
 }) => {
@@ -100,9 +100,9 @@ NSB_TS.Utils.AFJD_OP = NSB_TS.Utils.AFJDAFJD_OP || (({
     }
 });
 
-NSB_TS.Utils.AFJDAFJD_OP({url: `https://cdn.xgqfrms.xyz/json/data.json`});
-// NSB_TS.Utils.AFJDAFJD_OP({url: ``, debug: true});
-// NSB_TS.Utils.AFJDAFJD_OP({url: ``, debug: false});
+NSB_TS.Utils.AFJD_OP({url: `https://cdn.xgqfrms.xyz/json/data.json`});
+// NSB_TS.Utils.AFJD_OP({url: ``, debug: true});
+// NSB_TS.Utils.AFJD_OP({url: ``, debug: false});
 
 
 /*
