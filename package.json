@@ -12,6 +12,10 @@
         "linux-bash-shell": "rm -f ??? webpack & clear all dist ???",
         "main": "rollup.config.js"
     },
+    "bin": {
+        "nct": "nctcli",
+        "bin": "./bin.js"
+    },
     "keywords": [
         "NTB",
         "NSB",
@@ -34,6 +38,8 @@
         "eslint": "^4.11.0",
         "file-loader": "^1.1.5",
         "html-webpack-plugin": "^2.30.1",
+        "node-sass": "^4.7.2",
+        "rimraf": "^2.6.2",
         "rollup": "^0.51.8",
         "rollup-plugin-commonjs": "^8.2.6",
         "rollup-plugin-node-resolve": "^3.0.0",

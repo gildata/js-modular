@@ -3,6 +3,15 @@
 E:\github\RAIO\HTML5-Drag-Drop\新三板F9\readme.md
 
 
+NewThreeBoardThematicStatistics
+
+New Three Board Thematic Statistics
+
+thrid 第三
+
+
+http://10.1.5.202/xsb/ntb-zs/Modules/turnover-trend-make-market-diagram.html
+
 
 
 > 新三板速览web
@@ -38,11 +47,9 @@ http://jira.gildata.com:8888/browse/GFT-430
 http://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/chart/colors/
 
 
-NewThreeBoardThematicStatistics
 
-New Three Board Thematic Statistics
 
-thrid 第三
+
 
 
 ```js
