@@ -35,6 +35,11 @@ http://jira.gildata.com:8888/browse/GFT-430
 
 
 
+http://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/chart/colors/
+
+
+
+
 
 ```js
 
@@ -45,15 +50,15 @@ http://jira.gildata.com:8888/browse/GFT-430
 /**
  * @namespace NSB_TS_FV : New San Ban Thematic Statistics
  * @name newly-added-listing 新增挂牌
- * @createed 2017.11.07 
+ * @createed 2017.11.07
  * @author xgqfrms
  * @copyright Gildata, Inc 2017-present
- * @license MIT 
+ * @license MIT
  * @version v1.1.1
- * 
- * @param {* String} url 
+ *
+ * @param {* String} url
  * @param {* DOM Element} uid
- * @param {* Boolean} debug 
+ * @param {* Boolean} debug
  */
 
 // namespaces
@@ -64,7 +69,7 @@ NSB_TS_FV.Modules = NSB_TS_FV.Modules || {};
 NSB_TS_FV.Utils = NSB_TS_FV.Utils || {};
 NSB_TS_FV.Helper = NSB_TS_FV.Helper || {};
 
-/* 
+/*
 
 NSB_TS_FV.Modules.newlyAddedListing = NSB_TS_FV.Modules.newlyAddedListing || (() => console.log(`module testing!`));
 // () => console.log(`module testing!`)
@@ -126,7 +131,7 @@ $ touch abc.html xyz.html ufo.html
 
 
 
-$ touch new-sb-thematic-statistics-bulletin.html new-sb-thematic-statistics-bulletin.css new-sb-thematic-statistics-bulletin.js 
+$ touch new-sb-thematic-statistics-bulletin.html new-sb-thematic-statistics-bulletin.css new-sb-thematic-statistics-bulletin.js
 
 
 
@@ -135,8 +140,8 @@ $ touch 01.json 02.json 03.json 04.json 05.json 06.json 07.json 08.json 09.json 
 $ touch 04.json 05.json 06.json 07.json 08.json 09.json 10.json 11.json news.json bulletion.json
 
 
-$ touch news.json, bulletion.json 
-# bad 
+$ touch news.json, bulletion.json
+# bad
 # touch bad comma.png
 
 

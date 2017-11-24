@@ -4,6 +4,10 @@
 
 /* commons-title */
 
+* {
+    box-sizing: border-box;
+}
+
 .ntb-additional-issues-implementation-title {
     position: relative;
     color: #000;
@@ -31,10 +35,6 @@
     /* min-height: 100px; */
     height: 100%;
     width: 100%;
-}
-
-* {
-    box-sizing: border-box;
 }
 
 
