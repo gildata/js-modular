@@ -38,7 +38,11 @@ http://jira.gildata.com:8888/browse/GFT-430
 http://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/chart/colors/
 
 
+NewThreeBoardThematicStatistics
 
+New Three Board Thematic Statistics
+
+thrid 第三
 
 
 ```js

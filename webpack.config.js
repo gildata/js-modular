@@ -17,6 +17,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BASE_URI = {
     WEB: './src/modules/',
     ES5: './src/es5/',
+    NTB: `F9-three-board/NewThreeBoardThematicStatistics`
 };
 
 
@@ -42,10 +43,6 @@ var path = require("path"),
         "history.user": BASE_URI.WEB + '/user/history',
         "home.user": BASE_URI.WEB + '/user/home'
     },
-
-*/
-
-module.exports = {
     entry: {
         // 输入文件 public/src && no import in app, need to add as an entry
         app: './src/index.js',
@@ -54,7 +51,66 @@ module.exports = {
         nim: BASE_URI.WEB + '/no-import-module',
         // stock_f9: BASE_URI.WEB + '/es5-global-function',
         news: `${BASE_URI.ES5}/company-news`,
+        "newly-added-listing": `${BASE_URI.NTB}/newly-added-listing`,
+        "newly-added-protocol": `${BASE_URI.NTB}/newly-added-protocol`,
+        "transactions-leaderboard": `${BASE_URI.NTB}/transactions-leaderboard`,
+        "additional-issues-preplan": `${BASE_URI.NTB}/additional-issues-preplan`,
+        "additional-issues-implementation": `${BASE_URI.NTB}/additional-issues-implementation`,
+        "dividend-matters-preplan": `${BASE_URI.NTB}/dividend-matters-preplan`,
+        "dividend-matters-implementation": `${BASE_URI.NTB}/dividend-matters-implementation`,
+        "listing-situation": `${BASE_URI.NTB}/listing-situation`,
+        "transaction-overview": `${BASE_URI.NTB}/transaction-overview`,
+        "turnover-trend-make-market-diagram": `${BASE_URI.NTB}/turnover-trend-make-market-diagram`,
+        "turnover-trend-protocol-diagram": `${BASE_URI.NTB}/turnover-trend-protocol-diagram`,
+        "new-sb-thematic-statistics-news": `${BASE_URI.NTB}/new-sb-thematic-statistics-news`,
+        "new-sb-thematic-statistics-bulletin": `${BASE_URI.NTB}/new-sb-thematic-statistics-bulletin`,
     },
+*/
+
+
+
+
+const NTB_ZT = [
+    "newly-added-listing",
+    "newly-added-protocol",
+    "transactions-leaderboard",
+    "additional-issues-preplan",
+    "additional-issues-implementation",
+    "dividend-matters-preplan",
+    "dividend-matters-implementation",
+    "listing-situation",
+    "transaction-overview",
+    "turnover-trend-make-market-diagram",
+    "turnover-trend-protocol-diagram",
+    "new-sb-thematic-statistics-news",
+    "new-sb-thematic-statistics-bulletin",
+];
+
+let entry_obj = {};
+NTB_ZT.forEach(
+    (item, i) => {
+        entry_obj[item] = `${BASE_URI.NTB}/${item}`;
+    }
+);
+// no return
+
+/*
+    NTB_ZT.map(
+        (item, i) => {
+            entry_obj[item] = `${BASE_URI.NTB}/${item}`;
+        }
+    );
+    // return undefined
+*/
+
+
+
+
+
+module.exports = {
+    entry: Object.assign({},entry_obj),
+    // js map name & push to entry ???
+    // node read files name & /**/*.js
     output: {
         // 输出文件 public/build
         path: path.resolve(__dirname, "build/public/"),//主目录
