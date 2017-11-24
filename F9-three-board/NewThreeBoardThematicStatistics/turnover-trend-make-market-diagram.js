@@ -511,6 +511,12 @@ NSB_TS_FV.Modules.turnoverTrendProtocolDiagram.drawHC = NSB_TS_FV.Modules.turnov
         };
         // css_obj ???
         // babel & ES8 => ES5
+        let ES2017 = `ES8 => ES5 & babel`;
+        let emoji = `📙 Emojipedia — 😃 Home of Emoji Meanings 💁👌🎍😍`;
+        if (debug) {
+            console.log(`ES2017 = `, ES2017);
+            console.log(`emoji = \n`,emoji);
+        }
         const {color, colors, optioncolor, gridColor, legendColor, yAxisColor} = {...chart_css};
         // let color = chart_css.color,
         //     colors = chart_css.colors,
