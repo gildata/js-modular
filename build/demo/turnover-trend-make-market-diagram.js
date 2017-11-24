@@ -248,22 +248,22 @@ NSB_TS_FV.Modules.turnoverTrendMakeMarketDiagram.drawHC = NSB_TS_FV.Modules.turn
         };
         // css_obj ???
         // babel & ES8 => ES5
-        // const {color, colors, optioncolor, gridColor, legendColor, yAxisColor} = {...chart_css};
-        let color = chart_css.color,
-            colors = chart_css.colors,
-            optioncolor = chart_css.optioncolor,
-            gridColor = chart_css.gridColor,
-            legendColor = chart_css.legendColor,
-            yAxisColor = chart_css.yAxisColor;
+        const {color, colors, optioncolor, gridColor, legendColor, yAxisColor} = {...chart_css};
+        // let color = chart_css.color,
+        //     colors = chart_css.colors,
+        //     optioncolor = chart_css.optioncolor,
+        //     gridColor = chart_css.gridColor,
+        //     legendColor = chart_css.legendColor,
+        //     yAxisColor = chart_css.yAxisColor;
         // babel & ES8 => ES5
-        // let {
-        //     turnover_time,
-        //     turnover_number,
-        //     turnover_amount
-        // } = {...datas};
-        let turnover_time = datas.turnover_time,
-            turnover_number = datas.turnover_number,
-            turnover_amount = datas.turnover_amount;
+        let {
+            turnover_time,
+            turnover_number,
+            turnover_amount
+        } = {...datas};
+        // let turnover_time = datas.turnover_time,
+        //     turnover_number = datas.turnover_number,
+        //     turnover_amount = datas.turnover_amount;
         if (debug) {
             console.log(`HC turnover_time = \n`, turnover_time);
             console.log(`HC turnover_number = \n`, turnover_number);
@@ -511,22 +511,22 @@ NSB_TS_FV.Modules.turnoverTrendProtocolDiagram.drawHC = NSB_TS_FV.Modules.turnov
         };
         // css_obj ???
         // babel & ES8 => ES5
-        // const {color, colors, optioncolor, gridColor, legendColor, yAxisColor} = {...chart_css};
-        let color = chart_css.color,
-            colors = chart_css.colors,
-            optioncolor = chart_css.optioncolor,
-            gridColor = chart_css.gridColor,
-            legendColor = chart_css.legendColor,
-            yAxisColor = chart_css.yAxisColor;
+        const {color, colors, optioncolor, gridColor, legendColor, yAxisColor} = {...chart_css};
+        // let color = chart_css.color,
+        //     colors = chart_css.colors,
+        //     optioncolor = chart_css.optioncolor,
+        //     gridColor = chart_css.gridColor,
+        //     legendColor = chart_css.legendColor,
+        //     yAxisColor = chart_css.yAxisColor;
         // babel & ES8 => ES5
-        // let {
-        //     turnover_time,
-        //     turnover_number,
-        //     turnover_amount
-        // } = {...datas};
-        let turnover_time = datas.turnover_time,
-            turnover_number = datas.turnover_number,
-            turnover_amount = datas.turnover_amount;
+        let {
+            turnover_time,
+            turnover_number,
+            turnover_amount
+        } = {...datas};
+        // let turnover_time = datas.turnover_time,
+        //     turnover_number = datas.turnover_number,
+        //     turnover_amount = datas.turnover_amount;
         if (debug) {
             console.log(`HC turnover_time = \n`, turnover_time);
             console.log(`HC turnover_number = \n`, turnover_number);

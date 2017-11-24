@@ -17,7 +17,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BASE_URI = {
     WEB: './src/modules/',
     ES5: './src/es5/',
-    NTB: `F9-three-board/NewThreeBoardThematicStatistics`
+    NTB: `./F9-three-board/NewThreeBoardThematicStatistics`
 };
 
 
@@ -81,9 +81,9 @@ const NTB_ZT = [
     "listing-situation",
     "transaction-overview",
     "turnover-trend-make-market-diagram",
-    "turnover-trend-protocol-diagram",
-    "new-sb-thematic-statistics-news",
-    "new-sb-thematic-statistics-bulletin",
+    // "turnover-trend-protocol-diagram",
+    // "new-sb-thematic-statistics-news",
+    // "new-sb-thematic-statistics-bulletin",
 ];
 
 let entry_obj = {};
@@ -103,8 +103,7 @@ NTB_ZT.forEach(
     // return undefined
 */
 
-
-
+// http://10.1.5.202/xsb/ntb-zs/Modules/turnover-trend-make-market-diagram.html
 
 
 module.exports = {
@@ -113,7 +112,7 @@ module.exports = {
     // node read files name & /**/*.js
     output: {
         // 输出文件 public/build
-        path: path.resolve(__dirname, "build/public/"),//主目录
+        path: path.resolve(__dirname, "build/js/"),//主目录
         filename: '[name].min.js',// ??? hash version
         // filename: '[name].[hash:16].min.js',// hash version
         // [hash] 和 [chunkhash] 的长度可以使用 [hash:16]（默认为20）来指定。
