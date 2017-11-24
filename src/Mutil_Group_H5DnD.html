@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .layer {
+            float: left;
+        }
+        
+        .tile__list {
+            box-sizing: border-box;
+            border: 1px solid red;
+            width: 102px;
+            /* width: calc(300px + 8px); */
+            /* width: calc(102px * 3 + 8px); */
+            height: 402px;
+            margin: 10px;
+        }
+        
+        img {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+            border: 1px solid #0f0;
+            float: left;
+        }
+        
+        .tile__list>img:nth-of-type(1) {
+            background: red;
+        }
+        
+        .tile__list>img:nth-of-type(2) {
+            background: #f0f;
+        }
+        
+        .tile__list>img:nth-of-type(3) {
+            background: #0f0;
+        }
+        
+        .tile__list>img:nth-of-type(4) {
+            background: rgb(255, 72, 0);
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="container">
+            <div id="multi" https://rubaxa.github.io/Sortable/style="margin-left: 30px">
+                <div>
+                    <div data-force="5" class="layer title title_xl">Multi</div>
+                </div>
+                <div class="layer tile" data-force="30">
+                    <div class="tile__name">Group A</div>
+                    <div class="tile__list">
+                        <img src="https://rubaxa.github.io/Sortable/st/face-01.jpg" data-uid="01">
+                        <img src="https://rubaxa.github.io/Sortable/st/face-02.jpg" data-uid="02">
+                        <img src="https://rubaxa.github.io/Sortable/st/face-03.jpg" data-uid="03">
+                        <img src="https://rubaxa.github.io/Sortable/st/face-04.jpg" data-uid="04">
+                    </div>
+                </div>
+                <div class="layer tile" data-force="25">
+                    <div class="tile__name">Group B</div>
+                    <div class="tile__list">
+                        <img src="https://rubaxa.github.io/Sortable/st/face-05.jpg" data-uid="05">
+                        <img src="https://rubaxa.github.io/Sortable/st/face-06.jpg" data-uid="06">
+                        <img src="https://rubaxa.github.io/Sortable/st/face-07.jpg" data-uid="07">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- js:libs -->
+    <script src="https://rubaxa.github.io/Sortable/Sortable.js"></script>
+    <script>
+        // Multi groups
+        var byId = function(id) {
+            return document.getElementById(id);
+        };
+        Sortable.create(byId('multi'), {
+            animation: 150,
+            draggable: '.tile',
+            handle: '.tile__name'
+        });
+        [].forEach.call(byId('multi').getElementsByClassName('tile__list'), function(el) {
+            Sortable.create(el, {
+                group: 'photo',
+                animation: 150
+            });
+        });
+    </script>
+    <script>
+        window.onload = () => {
+            // **Must be using like this way**, `data-key*="partly-value"`!
+            let imgs = document.querySelectorAll(`[data-uid*="0"]`);
+            // data-key*="partly-value"
+            // imgs = document.querySelectorAll(`[data-uid*="0"]`);// OK
+            // imgs = document.querySelectorAll(`[data-uid*=""]`);// Error
+            // imgs = document.querySelectorAll(`[data-*="0"]`);// Error
+            // imgs = document.querySelectorAll(`[data*=""]`);// Error
+        };
+    </script>
+</body>
+
+</html>
