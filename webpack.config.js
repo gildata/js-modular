@@ -14,6 +14,8 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+// http://node.green
+
 const BASE_URI = {
     WEB: './src/modules/',
     ES5: './src/es5/',
