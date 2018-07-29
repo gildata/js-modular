@@ -1,24 +1,166 @@
 # JavasScript Modular
 
-> Module Format(AMD/CommonJS/UMD/CMD/ES6)  
+> Module Format(AMD/CommonJS/UMD/CMD/ES6)
 
-> Module Loader(RequireJS/SystemJS/Gulp task/webapck loader) 
+> Module Loader(RequireJS/SystemJS/Gulp task/webapck loader)
 
-> Module Bundler(Browserify/Gulp/Webpack/Rollup)  
+> Module Bundler(Browserify/Gulp/Webpack/Rollup)
 
 
 ```js
     // todo
-    
+
 ```
 
-### Webpack
+https://rollbar.com/docs/
+
+
+
+
+## rollup & eslint
+
+```sh
+
+$ npm i -D rollup eslint
+
+$ npm i -D rollup
+$ npm i -D eslint
+
+
+$ npm i -D rollup-plugin-uglify rollup-plugin-commonjs rollup-plugin-node-resolve
+
+$ npm i -D rollup-plugin-commonjs
+$ npm i -D rollup-plugin-uglify
+$ npm i -D rollup-plugin-node-resolve
+
+$ npm i -D rollup-plugin-babel
+
+
+```
+
+https://github.com/rollup/rollup-plugin-commonjs
+https://github.com/rollup/rollup-plugin-node-resolve
+
+https://github.com/TrySound/rollup-plugin-uglify
+
+```md
+
+"off" or 0 - turn the rule off
+"warn" or 1 - turn the rule on as a warning (doesn’t affect exit code)
+"error" or 2 - turn the rule on as an error (exit code will be 1)
+
+
+```
+
+
+rollup --help, or rollup -h.
+The -f option (short for --output.format)
+the --config or -c flag:
+
+
+```md
+
+
+-i, --input                 Input file (required)
+-o, --output.file           Output (if absent, prints to stdout)
+-f, --output.format [es]    Type of output (amd, cjs, es, iife, umd)
+-e, --external              Comma-separate list of module IDs to exclude
+-g, --globals               Comma-separate list of `module ID:Global` pairs
+                              Any module IDs defined here are added to external
+-n, --name                  Name for UMD export
+-m, --sourcemap             Generate sourcemap (`-m inline` for inline map)
+--amd.id                    ID for AMD module (default is anonymous)
+--amd.define                Function to use in place of `define`
+--no-strict                 Omit `"use strict";` in the generated bundle
+--no-conflict               Generate a noConflict method for UMD globals
+--intro                     Content to insert at top of bundle (inside wrapper)
+--outro                     Content to insert at end of bundle (inside wrapper)
+--banner                    Content to insert at top of bundle (outside wrapper)
+--footer                    Content to insert at end of bundle (outside wrapper)
+--interop                   Include interop block (true by default)
+
+
+In addition, the following arguments can be used:
+
+-h/--help
+Print the help document.
+
+-v/--version
+Print the installed version number.
+
+-w/--watch
+Rebuild the bundle when its source files change on disk.
+
+--silent
+Don't print warnings to the console.
+```
+
+
+
+
+# Webpack
+
+
+```sh
+
+$ npm i -D babel babel-cli babel-core babel-preset-env babel-polyfill
+$ npm i -D babel-loader babel-plugin-transform-object-rest-spread babel-preset-react
+
+
+$ npm i -D webpack uglifyjs-webpack-plugin html-webpack-plugin clean-webpack-plugin
+
+
+```
+
+
+## code spiltting
 
 > code spiltting & dynamic imports module at runtime
 
 https://github.com/tc39/proposal-dynamic-import
 
 https://webpack.js.org/
+
+
+
+https://webpack.js.org/guides/code-splitting/
+
+https://webpack.js.org/plugins/commons-chunk-plugin/
+
+https://webpack.js.org/plugins/extract-text-webpack-plugin/
+https://webpack.js.org/loaders/bundle-loader/
+https://github.com/gaearon/promise-loader
+
+
+
+https://webpack.js.org/guides/code-splitting/#dynamic-imports
+
+
+chunkFilename: '[name].bundle.js',
+
+## import & then & catch
+
+## async function & await
+
+https://webpack.js.org/guides/lazy-loading/
+https://github.com/webpack/analyse
+https://webpack.js.org/guides/caching/
+
+filename: '[name].[chunkhash].js',
+
+vendor: [
+    'lodash'
+]
+
+new webpack.optimize.CommonsChunkPlugin({
+    name: 'vendor'
+}),
+
+new webpack.HashedModuleIdsPlugin(),
+
+
+
+https://medium.freecodecamp.org/javascript-modules-a-beginner-s-guide-783f7d7a5fcc
 
 
 ### Rollup
@@ -34,7 +176,7 @@ https://github.com/rollup/rollup
 https://medium.com/@Rich_Harris/tree-shaking-versus-dead-code-elimination-d3765df85c80#.jnypozs9n
 
 
-CommonJS modules, AMD modules, and IIFE-style scripts. 
+CommonJS modules, AMD modules, and IIFE-style scripts.
 
 https://github.com/rollup/rollup/wiki/Command-Line-Interface
 https://github.com/rollup/rollup/wiki/JavaScript-API
@@ -74,7 +216,7 @@ $ rollup -h
 # es – Keep the bundle as an ES module file
 # umd – Universal Module Definition, works as amd, cjs and iife all in one
 
-# iife – A self-executing function, suitable for inclusion as a <script> tag. 
+# iife – A self-executing function, suitable for inclusion as a <script> tag.
 # (If you want to create a bundle for your application, you probably want to use this, because it leads to smaller file sizes.)
 
 
@@ -232,7 +374,7 @@ Load the module code, but don't make any new objects available.
 
 import './module.js';// images / css ???
 
-// This is useful for polyfills, 
+// This is useful for polyfills,
 // or when the primary purpose of the imported code is to muck about with prototypes
 
 ```
@@ -273,7 +415,7 @@ export function cube ( x ) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory() :
     typeof define === 'function' && define.amd ? define(factory) : (factory());
 }(this, (
-    function () { 
+    function () {
         'use strict';
         // This function isn't used anywhere, so
         // Rollup excludes it from the bundle...
@@ -300,7 +442,7 @@ export function cube ( x ) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory() :
     typeof define === 'function' && define.amd ? define(factory) : (factory());
 }(this, (
-    function () { 
+    function () {
         'use strict';
         // local variable
         let b = document.querySelector(`body`);
@@ -322,6 +464,23 @@ b;
 
 
 
+# Webpack & Production
+
+> v3.8.1
+
+![](https://img.shields.io/npm/v/webpack.svg?label=webpack&style=flat-square&maxAge=3600)
+
+https://webpack.js.org/guides/production/#cli-alternatives
+
+
+```md
+- |- webpack.config.js
+
++ |- webpack.common.js
++ |- webpack.dev.js
++ |- webpack.prod.js
+
+```
 
 
 
